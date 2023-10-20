@@ -1,6 +1,4 @@
 import Footer from './components/Footer'
-// import Header from './components/Header'
-import Nav from './components/Nav'
 import NavBar from './components/NavBar'
 import './globals.css'
 import { Inter } from 'next/font/google'
