@@ -23,7 +23,7 @@ function Hero() {
         />
         </div>
 
-        <Carousel.Caption>
+        <Carousel.Caption className='p-2 bg-white opacity-70'>
           <h1 className='text-2xl text-black font-bold'>Simple yet effective Passion (Philosophy)</h1>
           <p className='text-xl text-black'>
           To offer our customers a curated selection of premium pre-owned vehicles that exemplify quality,
@@ -43,7 +43,7 @@ only look great but also perform exceptionally well.
         />
         </div>
 
-        <Carousel.Caption>
+        <Carousel.Caption className='p-2 bg-white opacity-70'>
           <h1 className='text-2xl text-black font-bold'>Our Services</h1>
           <p className='text-xl text-white'>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
@@ -60,7 +60,7 @@ only look great but also perform exceptionally well.
         />
         </div>
 
-        <Carousel.Caption>
+        <Carousel.Caption className='p-2 bg-white opacity-70'>
           <h1 className='text-2xl text-black font-bold'>Guaranteed Ownership Transfer</h1>
           <p className='text-xl text-black'>
           In order to protect owner interest and buyer confidence, CarLay provide Hassle free and guaranteed
@@ -81,7 +81,7 @@ ownership transfer. From document verification till new owner name RC book, we h
       </video> */}
         </div>
 
-        <Carousel.Caption>
+        <Carousel.Caption className='p-2 bg-white opacity-70'>
           <h1 className='text-2xl text-black font-bold'>Fourth slide</h1>
           <p className='text-xl text-black'>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.

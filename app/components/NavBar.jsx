@@ -5,9 +5,8 @@ import {FaBars,FaTimes} from "react-icons/fa"
 const NavBar = () => {
     const navlinks=[
         {title:"Home",link:"/"},
-        {title:"About",link:"/"},
-        {title:"ContactUs",link:"/"},
-        {title:"Services",link:"/"},
+        {title:"About",link:"/about"},
+        {title:"ContactUs",link:"/contact"},
         
     ]
     const [open,setOpen]=useState(false);

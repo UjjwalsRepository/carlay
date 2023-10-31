@@ -85,12 +85,12 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
         {/* <img className="w-full rounded-xl" src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Colors" /> */}
         
       </div>
-      <h1 className="cursor-pointer uppercase">Variant Name-{variant}</h1>
-      <p className="cursor-pointer uppercase">S. No.-{serial}</p>
-      <p className="cursor-pointer uppercase">Manufacture Year-{mfg}</p>
-      <p className="cursor-pointer uppercase">Kilometer-{km}</p>
-      <p className="cursor-pointer uppercase">Transmission-{transmission}</p>
-      <p className="cursor-pointer uppercase">Fuel Type-{fuel}</p>
+      <h1 className="cursor-pointer uppercase my-2"><span className="font-bold">{variant}</span></h1>
+      <div className="flex gap-1 flex-wrap my-2">
+        <p className="cursor-pointer uppercase text-sm"><span className="text-gray-500">REG.YEAR - </span><span className="font-bold">{mfg}</span> |&nbsp;</p>
+        <p className="cursor-pointer uppercase text-sm"><span className="text-gray-500">KMS - </span><span className="font-bold">{km}</span> |&nbsp;</p>
+        <p className="cursor-pointer uppercase text-sm"><span className="text-gray-500">FUEL TYPE - </span><span className="font-bold">{fuel}</span></p>
+      </div>
       <div className="my-2">
         {/* <div className="flex space-x-1 items-center">
           <span>

@@ -3,7 +3,7 @@ import React,{useEffect, useState} from 'react'
 import { Country, State, City }  from 'country-state-city';
 import { ICountry, IState, ICity } from 'country-state-city';
 import Select from "react-select";
-import MultiFileUploadForm from '../components/MultiFileUploadForm';
+// import MultiFileUploadForm from '../components/MultiFileUploadForm';
 import { Col, Row } from 'react-bootstrap';
 const initialValues = {
     manufacturer : "",
@@ -21,7 +21,7 @@ const Page = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [selectedState, setSelectedState] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
-
+    const [selectInsurance,setSelectInsurance]=useState(false);
     const manufactures=["Maruti suzuki","Hyundai","Tata","Honda","Toyota","Mahindra","Skoda","Volkswagen","Isuzu","Nissan",'Jeep',"MG", "BMW","Audi","Mercedes", "Others"]
    const indianStates = [
   'Andaman and Nicobar Islands',
@@ -78,13 +78,29 @@ const transmission=["Automatic","Manual"]
         e.preventDefault();
         console.log(values);
       }
-
+    const handleInsurance=(e)=>{
+            //alert(e.target.value)
+            if(e.target.value==="YES"){
+                setSelectInsurance(true)
+            }else{
+                setSelectInsurance(false)
+            }
+    }
     useEffect(() => {
         console.log(selectedCountry);
         console.log(selectedCountry?.isoCode);
         console.log(State?.getStatesOfCountry(selectedCountry?.isoCode));
       }, [selectedCountry]);
     
+
+    let minOffset = 0, maxOffset = 10;
+    let thisYear = (new Date()).getFullYear();
+    let allYears = [];
+    for(let x = 0; x <= maxOffset; x++) {
+        allYears.push(thisYear - x)
+    }
+
+    const yearList = allYears.map((x) => {return(<option key={x}>{x}</option>)});
      
   return (
     <>
@@ -92,6 +108,13 @@ const transmission=["Automatic","Manual"]
             <div className='bg-sky-300 rounded-t-md'>
 
     <h1 className="text-xl  text-black capitalize dark:text-black text-center">Your trusted partner for Buy/Sell premium pre-owned cars.</h1>
+    <p className="text-xl py-2 text-black capitalize dark:text-black text-center">Are you looking to sell your used car hassle-free? Welcome to our trusted Park and Sell service!
+We offer a seamless platform for sellers to showcase their vehicles to a wide audience of potential
+buyers. Our well-maintained parking facility provides a secure space for your car.
+Trust in our expertise and let us handle the advertising, inquiries, and negotiations with the potential
+buyer.
+We also purchase well kept cars directly, to be sold under our Carlay Assured program. Just fill in the
+details below and our team will assist you.</p>
     <p className="text-xl py-2 text-black capitalize dark:text-black text-center">We sincerely believe that our customer shall be really happy with our offered services.</p>
             </div>
     <h1 className="text-xl font-bold text-black px-4 py-2 capitalize dark:text-white">Please fill the form with correct information and we shall revert shortly.</h1>
@@ -99,8 +122,9 @@ const transmission=["Automatic","Manual"]
     <form onSubmit={handleSubmit}>
         <Row className="flex w-full p-6">
             <Col lg="4" md="4" sm="6" className='mb-3'>
-                <label className="text-black font-medium" >Select Manufacturer *</label>
+                <label className="text-black font-medium" >Manufacturer *</label>
                 <select name="manufacturer" value={values.manufacturer} onChange={handleInputChange} className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Manufacturer</option>
                 {manufactures.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
@@ -116,18 +140,15 @@ const transmission=["Automatic","Manual"]
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Year of manufacture *</label>
-                <input 
-                className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                
-                type="date" 
-                value={values.eom}
-                onChange={handleInputChange}
-                name="eom"
-                />
+                <select name="ownership" className="block w-full  py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Year</option>
+                {yearList}
+                </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Ownership *</label>
                 <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Ownership</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -137,36 +158,53 @@ const transmission=["Automatic","Manual"]
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Registered state *</label>
                 <select name="ownership" className="block w-full  py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select State</option>
                 {indianStates.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Fuel Type *</label>
                 <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Fuel Type</option>
                 {fuelType.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Transmission *</label>
                 <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Transmission</option>
                 {transmission.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Accidental *</label>
                 <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Accidental</option>
                 <option>YES</option>
                 <option>NO</option>
                 </select>
             </Col>
-            
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Insurance *</label>
+                <select onChange={handleInsurance} name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option selected>Select Insurance</option>
+                <option>YES</option>
+                <option>NO</option>
+                </select>
+            </Col>
+            {selectInsurance &&
+                <Col lg="4" md="4" sm="6" className='mb-3'>
+                <label className="text-black font-medium" >Year of manufacture *</label>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                name="insurance"
+                
+                type="date" 
+                value={values.eom}
+                onChange={handleInputChange}
+                name="eom"
                 />
             </Col>
+            }
             
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Kilometer Reading *</label>
@@ -248,6 +286,7 @@ const transmission=["Automatic","Manual"]
                 <input 
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type='number'
+                min="1"
                 placeholder='Enter your expected peice'
                 />
             </Col>
