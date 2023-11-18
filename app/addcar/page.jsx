@@ -74,12 +74,20 @@ const transmission=["Automatic","Manual"]
         });
       };
 
-      const handleSubmit=(e)=>{
+    //   const handleSubmit=(e)=>{
+    //     e.preventDefault();
+    //     console.log(values);
+    //   }
+
+    const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(values);
+        const fd=new FormData(e.target);
+        const data=Object.fromEntries(fd.entries());
+        console.log("Form Data",data);
+        // e.target.reset();
       }
     const handleInsurance=(e)=>{
-            //alert(e.target.value)
+            alert(e.target.value)
             if(e.target.value==="YES"){
                 setSelectInsurance(true)
             }else{
@@ -107,15 +115,17 @@ const transmission=["Automatic","Manual"]
         <section className="m-6 rounded-md shadow-lg ">
             <div className='bg-sky-300 rounded-t-md'>
 
-    <h1 className="text-xl  text-black capitalize dark:text-black text-center">Your trusted partner for Buy/Sell premium pre-owned cars.</h1>
-    <p className="text-xl py-2 text-black capitalize dark:text-black text-center">Are you looking to sell your used car hassle-free? Welcome to our trusted Park and Sell service!
+    <h1 className="text-xl font-bold text-black capitalize dark:text-black text-center">Your trusted partner for Buy/Sell premium pre-owned cars.</h1>
+    <p className="px-4 py-2 text-black dark:text-black ">Are you looking to sell your used car hassle-free? Welcome to our trusted Park and Sell service!
 We offer a seamless platform for sellers to showcase their vehicles to a wide audience of potential
-buyers. Our well-maintained parking facility provides a secure space for your car.
+buyers.
+</p>
+<p className='px-4 py-2 text-black dark:text-black'>Our well-maintained parking facility provides a secure space for your car.
 Trust in our expertise and let us handle the advertising, inquiries, and negotiations with the potential
-buyer.
-We also purchase well kept cars directly, to be sold under our Carlay Assured program. Just fill in the
+buyer.</p>
+<p className='px-4 py-2 text-black dark:text-black'>We also purchase well kept cars directly, to be sold under our Carlay Assured program. Just fill in the
 details below and our team will assist you.</p>
-    <p className="text-xl py-2 text-black capitalize dark:text-black text-center">We sincerely believe that our customer shall be really happy with our offered services.</p>
+    <p className="px-4 text-xl py-2 text-black capitalize dark:text-black ">We sincerely believe that our customer shall be really happy with our offered services.</p>
             </div>
     <h1 className="text-xl font-bold text-black px-4 py-2 capitalize dark:text-white">Please fill the form with correct information and we shall revert shortly.</h1>
 
@@ -123,7 +133,7 @@ details below and our team will assist you.</p>
         <Row className="flex w-full p-6">
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Manufacturer *</label>
-                <select name="manufacturer" value={values.manufacturer} onChange={handleInputChange} className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="manufacturer" required className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Manufacturer</option>
                 {manufactures.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
@@ -132,22 +142,23 @@ details below and our team will assist you.</p>
                 <label className="text-black font-medium" >Variant name / Specific Model *</label>
                 <input 
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                value={values.variantname}
-                onChange={handleInputChange}
+                // value={values.variantname}
+                // onChange={handleInputChange}
+                required
                 name="variantname"
                 placeholder='Enter variant name'
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Year of manufacture *</label>
-                <select name="ownership" className="block w-full  py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="eom" required className="block w-full  py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Year</option>
                 {yearList}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Ownership *</label>
-                <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="ownership" required className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Ownership</option>
                 <option>1</option>
                 <option>2</option>
@@ -157,28 +168,28 @@ details below and our team will assist you.</p>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Registered state *</label>
-                <select name="ownership" className="block w-full  py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="regstate" required className="block w-full  py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select State</option>
                 {indianStates.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Fuel Type *</label>
-                <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="fuel" required className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Fuel Type</option>
                 {fuelType.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Transmission *</label>
-                <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="transmission" required className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Transmission</option>
                 {transmission.map((item,index)=><option key={index}>{item}</option>)}
                 </select>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Accidental *</label>
-                <select name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="accidental" required className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Accidental</option>
                 <option>YES</option>
                 <option>NO</option>
@@ -186,7 +197,7 @@ details below and our team will assist you.</p>
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
                 <label className="text-black font-medium" >Insurance *</label>
-                <select onChange={handleInsurance} name="ownership" className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select  name="insurance" required className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <option selected>Select Insurance</option>
                 <option>YES</option>
                 <option>NO</option>
@@ -194,14 +205,14 @@ details below and our team will assist you.</p>
             </Col>
             {selectInsurance &&
                 <Col lg="4" md="4" sm="6" className='mb-3'>
-                <label className="text-black font-medium" >Year of manufacture *</label>
+                <label className="text-black font-medium" >Insurance End date *</label>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                
+                required
                 type="date" 
-                value={values.eom}
-                onChange={handleInputChange}
-                name="eom"
+                // value={values.eom}
+                // onChange={handleInputChange}
+                name="insurancedate"
                 />
             </Col>
             }
@@ -211,8 +222,9 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 px-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="text"
-                value={values.kilometer}
-                onChange={handleInputChange}
+                required
+                // value={values.kilometer}
+                // onChange={handleInputChange}
                 name="kilometer"
                 placeholder='Enter kilometer reading'
                 />
@@ -223,6 +235,7 @@ details below and our team will assist you.</p>
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
                 name="front"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -230,7 +243,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="right"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -238,7 +252,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="left"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -246,7 +261,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="rear"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -254,7 +270,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="dashboard"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -262,7 +279,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="seat"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -270,7 +288,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="odometer"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -278,7 +297,8 @@ details below and our team will assist you.</p>
                 <input 
                 className="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type="file"
-                name="front"
+                name="rc"
+                required
                 />
             </Col>
             <Col lg="4" md="4" sm="6" className='mb-3'>
@@ -287,6 +307,8 @@ details below and our team will assist you.</p>
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 type='number'
                 min="1"
+                name='price'
+                required
                 placeholder='Enter your expected peice'
                 />
             </Col>

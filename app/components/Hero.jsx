@@ -24,8 +24,8 @@ function Hero() {
         </div>
 
         <Carousel.Caption className='p-2 bg-white opacity-70'>
-          <h1 className='text-2xl text-black font-bold'>Simple yet effective Passion (Philosophy)</h1>
-          <p className='text-xl text-black'>
+          <h1 className='text-xl text-black font-bold'>Simple yet effective Passion (Philosophy)</h1>
+          <p className='text-lg text-black'>
           To offer our customers a curated selection of premium pre-owned vehicles that exemplify quality,
 reliability, and style. Each vehicle in our inventory undergoes a rigorous inspection process to ensure
 it meets our high standards. This meticulous approach allows us to present you with vehicles that not
@@ -44,8 +44,8 @@ only look great but also perform exceptionally well.
         </div>
 
         <Carousel.Caption className='p-2 bg-white opacity-70'>
-          <h1 className='text-2xl text-black font-bold'>Our Services</h1>
-          <p className='text-xl text-white'>
+          <h1 className='text-xl text-black font-bold'>Our Services</h1>
+          <p className='text-lg text-white'>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
         </Carousel.Caption>
@@ -61,8 +61,8 @@ only look great but also perform exceptionally well.
         </div>
 
         <Carousel.Caption className='p-2 bg-white opacity-70'>
-          <h1 className='text-2xl text-black font-bold'>Guaranteed Ownership Transfer</h1>
-          <p className='text-xl text-black'>
+          <h1 className='text-xl text-black font-bold'>Guaranteed Ownership Transfer</h1>
+          <p className='text-lg text-black'>
           In order to protect owner interest and buyer confidence, CarLay provide Hassle free and guaranteed
 ownership transfer. From document verification till new owner name RC book, we handle everything.
           </p>
@@ -82,8 +82,8 @@ ownership transfer. From document verification till new owner name RC book, we h
         </div>
 
         <Carousel.Caption className='p-2 bg-white opacity-70'>
-          <h1 className='text-2xl text-black font-bold'>Fourth slide</h1>
-          <p className='text-xl text-black'>
+          <h1 className='text-xl text-black font-bold'>Fourth slide</h1>
+          <p className='text-lg text-black'>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
         </Carousel.Caption>
