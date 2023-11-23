@@ -1,6 +1,6 @@
 import React from 'react'
 
-const page = () => {
+const Page = () => {
     return (
         <>
             <section className="relative pb-8 " style={{ height: "750px" }}>
@@ -124,4 +124,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
