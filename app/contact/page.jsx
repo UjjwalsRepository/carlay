@@ -1,14 +1,14 @@
 "use client"
 import React from 'react'
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { useMemo } from "react";
+// import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+// import { useMemo } from "react";
 
 const page = () => {
 
-   const { isLoaded } = useLoadScript({
-      googleMapsApiKey: "AIzaSyAlsAvFDV3zgYh-F37gJF6ULIA-uzmnEYQ",
-    });
-    const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
+   // const { isLoaded } = useLoadScript({
+   //    googleMapsApiKey: "AIzaSyAlsAvFDV3zgYh-F37gJF6ULIA-uzmnEYQ",
+   //  });
+   //  const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
 
   return (
     <>
@@ -134,7 +134,7 @@ const page = () => {
             <div
                className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12" 
                >
-                {!isLoaded ? (
+                {/* {!isLoaded ? (
         <h1>Loading...</h1>
       ) : (
         <GoogleMap
@@ -144,7 +144,7 @@ const page = () => {
         >
           <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
         </GoogleMap>
-      )}
+      )} */}
                {/* <form>
                   <div className="mb-6">
                      <input
