@@ -1,36 +1,42 @@
 import React from 'react'
 
-const page = () => {
+const Page = () => {
     return (
         <>
-            <section className="relative pb-8 " style={{ height: "750px" }}>
-                <div>
-                    <img src="/images/slider4.jpeg"
-                        className="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full" alt="" />
-                    <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center holder bg-gray-900/75">
-                        <div className="z-10 max-w-5xl px-4 mx-auto text-center">
-                            {/* <span className="text-xs font-semibold text-blue-400 uppercase">Knowledge is power</span> */}
-                            <h2
-                                className="mt-2 mb-4 text-3xl font-bold leading-tight text-white md:text-4xl md:leading-tight lg:text-7xl lg:leading-tight g">
-                                ABOUT US
-                            </h2>
-                            <p className="mb-8 text-base leading-8 text-gray-400 lg:text-xl">
-                                Welcome to CarLay Autos, your destination for premium pre-owned vehicles in Pune, Maharashtra.
-                                At CarLay Autos, we understand that finding the perfect pre-owned vehicle can be a significant
-                                decision. That&#39;s why we&#39;re dedicated to providing a seamless and exceptional car buying experience.
-                                With a commitment to quality, transparency, and customer satisfaction, we stand out as a trusted
-                                name in the automotive industry.</p>
-                            {/* <a className="block px-5 py-3 text-sm font-semibold text-center text-indigo-500 transition duration-200 bg-white border border-white rounded md:inline-block hover:bg-indigo-50 hover:border-indigo-50"
-                        href="#"> Learn More </a> */}
+            <section className="relative  bg-blueGray-50">
+                <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+                    <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{ backgroundImage: "url('/images/slider4.jpeg');" }} >
+                        <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
+                    </div>
+                    <div className="container relative mx-auto">
+                        <div className="items-center flex flex-wrap">
+                            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                                <div className="pr-12">
+                                    <h1 className="text-white font-semibold text-5xl">
+                                        ABOUT US
+                                    </h1>
+                                    <p className="mt-4 text-lg text-white">
+                                        Welcome to CarLay Autos, your destination for premium pre-owned vehicles in Pune, Maharashtra.
+                                        At CarLay Autos, we understand that finding the perfect pre-owned vehicle can be a significant
+                                        decision. That&#39;s why we&#39;re dedicated to providing a seamless and exceptional car buying experience.
+                                        With a commitment to quality, transparency, and customer satisfaction, we stand out as a trusted
+                                        name in the automotive industry.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style={{ transform: "translateZ(0px)" }}
+                    >
+                        <svg className="abso}}lute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                            <polygon className="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+                        </svg>
+                    </div>
                 </div>
-            </section>
-            {/* <div className="grid grid-cols-1 lg:grid-cols-4  relative mt-0 lg:-mt-[90px]  z-10  rounded"> */}
-            <section className="pb-10 bg-blueGray-200 -mt-24">
+                <section className="pb-10 bg-blueGray-200 -mt-24">
                     <div className="container mx-auto px-4">
-                        <div className="flex flex-wrap justify-center">
-                            <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
+                        <div className="flex flex-wrap">
+                            <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
                                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                     <div className="px-4 py-5 flex-auto">
                                         <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
@@ -46,7 +52,7 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
+                            <div className="w-full md:w-4/12 px-4 text-center">
                                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                     <div className="px-4 py-5 flex-auto">
                                         <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
@@ -62,7 +68,7 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="pt-6 w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
+                            <div className="pt-6 w-full md:w-4/12 px-4 text-center">
                                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                     <div className="px-4 py-5 flex-auto">
                                         <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
@@ -78,7 +84,7 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
+                            <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
                                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                     <div className="px-4 py-5 flex-auto">
                                         <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
@@ -93,7 +99,7 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
+                            <div className="w-full md:w-4/12 px-4 text-center">
                                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                     <div className="px-4 py-5 flex-auto">
                                         <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
@@ -109,7 +115,7 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="pt-6 w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
+                            <div className="pt-6 w-full md:w-4/12 px-4 text-center">
                                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                     <div className="px-4 py-5 flex-auto">
                                         <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
@@ -122,13 +128,15 @@ const page = () => {
                                         </p>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
 
                 </section>
+            </section>
+
         </>
     )
 }
 
-export default page
+export default Page

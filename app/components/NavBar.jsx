@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import React,{useState} from 'react'
 import {FaBars,FaTimes} from "react-icons/fa"
+import { IoHome } from "react-icons/io5";
+
 const NavBar = () => {
     const navlinks=[
         {title:"Home",link:"/"},
@@ -19,7 +21,8 @@ const NavBar = () => {
             <div className="flex items-center justify-between h-20">
                     <div className="flex items-center">
                         <Link href="/" className='text-white'>
-                            <span className='tracking-wide text-2xl font-bold hover:border-4'>CarLay</span>
+                            <span className='tracking-wide text-2xl font-bold' id="logo">CarLay</span><br/>
+                            <span><i className='italic'>Nayi Nahi Par Nayi Jaisi</i></span>
                         </Link>
                    </div>
                     {/* NavLinks */}

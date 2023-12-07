@@ -100,7 +100,7 @@ const Faq = () => {
 			</details>
 		</div>
 	</div>
-</div>
+	</div>
   )
 }
 
