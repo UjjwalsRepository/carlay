@@ -3,7 +3,7 @@ import React from 'react'
 // import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 // import { useMemo } from "react";
 
-const page = () => {
+const Page = () => {
 
    // const { isLoaded } = useLoadScript({
    //    googleMapsApiKey: "AIzaSyAlsAvFDV3zgYh-F37gJF6ULIA-uzmnEYQ",
@@ -1000,4 +1000,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
