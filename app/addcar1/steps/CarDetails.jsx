@@ -40,9 +40,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="variantName"
+              value={userData["variantName" || ""]}
+              onChange={handleChange}
               
             >
               <MenuItem value="">
@@ -60,10 +60,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
-              
+              name="eom"
+              value={userData["eom" || ""]}
+              onChange={handleChange}              
             >
               <MenuItem value="">
                 <em>None</em>
@@ -80,9 +79,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="ownership"
+              value={userData["ownership" || ""]}
+              onChange={handleChange} 
               
             >
               <MenuItem value="">
@@ -100,9 +99,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="fuel"
+              value={userData["fuel" || ""]}
+              onChange={handleChange}
               
             >
               <MenuItem value="">
@@ -120,9 +119,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="transmission"
+              value={userData["transmission" || ""]}
+              onChange={handleChange}
               
             >
               <MenuItem value="">
@@ -140,9 +139,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="accidental"
+              value={userData["accidental" || ""]}
+              onChange={handleChange}
               
             >
               <MenuItem value="">
@@ -160,9 +159,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="insurance"
+              value={userData["insurance" || ""]}
+              onChange={handleChange}
               
             >
               <MenuItem value="">
@@ -180,9 +179,9 @@ const CarDetails = () => {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
-              label="Age"
+              name="regState"
+              value={userData["regState" || ""]}
+              onChange={handleChange}
               
             >
               <MenuItem value="">
@@ -200,8 +199,9 @@ const CarDetails = () => {
             id="incenddate"
             name="incenddate"
             label="Insurance End Date"
+            value={userData["incenddate" || ""]}
+            onChange={handleChange}
             fullWidth
-            autoComplete="family-name"
             variant="standard"
             type='date'
           />
@@ -211,6 +211,8 @@ const CarDetails = () => {
             required
             id="kilometer"
             name="kilometer"
+            value={userData["kilometer" || ""]}
+            onChange={handleChange}
             label="Kilometer Reading"
             fullWidth
             autoComplete="family-name"
@@ -223,6 +225,8 @@ const CarDetails = () => {
             required
             id="front"
             name="front"
+            value={userData["front"] || ""}
+            onChange={handleChange}
             label="Front Pic"
             fullWidth
             autoComplete="shipping address-line1"
@@ -234,6 +238,8 @@ const CarDetails = () => {
           <TextField
             id="right"
             name="right"
+            value={userData["right"] || ""}
+            onChange={handleChange}
             label="Right Pic"
             fullWidth
             autoComplete="shipping address-line2"
@@ -246,6 +252,8 @@ const CarDetails = () => {
             required
             id="left"
             name="left"
+            value={userData["left"] || ""}
+            onChange={handleChange}
             label="Left Pic"
             fullWidth
             autoComplete="shipping address-level2"
@@ -257,6 +265,8 @@ const CarDetails = () => {
           <TextField
             id="rear"
             name="rear"
+            value={userData["rear"] || ""}
+            onChange={handleChange}
             label="Rear Pic"
             fullWidth
             variant="standard"
@@ -268,6 +278,8 @@ const CarDetails = () => {
             required
             id="dashboard"
             name="dashboard"
+            value={userData["dashboard"] || ""}
+            onChange={handleChange}
             label="Dashboard Pic"
             fullWidth
             autoComplete="shipping postal-code"
@@ -280,6 +292,8 @@ const CarDetails = () => {
             required
             id="odometer"
             name="odometer"
+            value={userData["odometer"] || ""}
+            onChange={handleChange}
             label="Odometer Pic"
             fullWidth
             autoComplete="shipping country"
@@ -291,12 +305,14 @@ const CarDetails = () => {
           <TextField
             required
             id="seat"
-            name="seat"
             label="Seat Pic"
             fullWidth
             autoComplete="shipping country"
             variant="standard"
             type='file'
+            name="seat"
+            value={userData["seat"] || ""}
+            onChange={handleChange}
           />
         </Grid>
         
