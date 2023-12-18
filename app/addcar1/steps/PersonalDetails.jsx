@@ -22,6 +22,9 @@ useEffect(() => {
   axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/GetManufacturer").then((response) => {
     console.log("URL Data",response.data);
   });
+  // axios.get("https://jsonplaceholder.typicode.com/todos").then((response) => {
+  //   console.log("URL Data",response.data);
+  // });
 }, []);
 
 

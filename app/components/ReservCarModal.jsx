@@ -52,7 +52,7 @@ const ReservCarModal = (props) => {
           type="email" id="email" name="user_email" placeholder="john@example.com"/>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2" for="password">Phone</label>
         <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
           type="number" id="password" name="password" placeholder="+91-9876-54-32"/>
       </div>

@@ -21,78 +21,10 @@ const CarDetails = () => {
   return (
     <div>
         <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            required
-            id="manufacturer"
-            name="manufacturer"
-            label="Manufacturer"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-            value={userData["manufacturer"] || ""}
-            onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <FormControl variant="standard" sx={{minWidth: 120 }} className='w-full'>
-            <InputLabel id="demo-simple-select-standard-label">Variant name / Specific Model *</InputLabel>
-            <Select
-              labelId="demo-simple-select-standard-label"
-              id="demo-simple-select-standard"
-              name="variantName"
-              value={userData["variantName" || ""]}
-              onChange={handleChange}
-              
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <FormControl variant="standard" sx={{minWidth: 120 }} className='w-full'>
-            <InputLabel id="demo-simple-select-standard-label">Year of manufacture *</InputLabel>
-            <Select
-              labelId="demo-simple-select-standard-label"
-              id="demo-simple-select-standard"
-              name="eom"
-              value={userData["eom" || ""]}
-              onChange={handleChange}              
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <FormControl variant="standard" sx={{minWidth: 120 }} className='w-full'>
-            <InputLabel id="demo-simple-select-standard-label">Ownership *</InputLabel>
-            <Select
-              labelId="demo-simple-select-standard-label"
-              id="demo-simple-select-standard"
-              name="ownership"
-              value={userData["ownership" || ""]}
-              onChange={handleChange} 
-              
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+        
+       
+       
+        
         <Grid item xs={12} sm={4}>
           <FormControl variant="standard" sx={{minWidth: 120 }} className='w-full'>
             <InputLabel id="demo-simple-select-standard-label">Fuel Type *</InputLabel>
@@ -107,9 +39,9 @@ const CarDetails = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="petrol">Petrol</MenuItem>
+              <MenuItem value="diesel">Diesel</MenuItem>
+              <MenuItem value="cng">CNG</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -127,9 +59,9 @@ const CarDetails = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="automatic">Automatic</MenuItem>
+              <MenuItem value="manual">Manual</MenuItem>
+              
             </Select>
           </FormControl>
         </Grid>
@@ -147,9 +79,8 @@ const CarDetails = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="no">No</MenuItem>
+              <MenuItem value="yes">Yes</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -167,31 +98,38 @@ const CarDetails = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="no">No</MenuItem>
+              <MenuItem value="yes">Yes</MenuItem>
             </Select>
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <FormControl variant="standard" sx={{minWidth: 120 }} className='w-full'>
-            <InputLabel id="demo-simple-select-standard-label">Registered state *</InputLabel>
-            <Select
-              labelId="demo-simple-select-standard-label"
-              id="demo-simple-select-standard"
-              name="regState"
-              value={userData["regState" || ""]}
-              onChange={handleChange}
-              
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
+          <TextField
+            required
+            id="curLocation"
+            name="curLocation"
+            value={userData["curLocation" || ""]}
+            onChange={handleChange}
+            label="Vechile Current Location"
+            fullWidth
+            autoComplete="family-name"
+            variant="standard"
+            
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <TextField
+            required
+            id="regNo"
+            name="regNo"
+            value={userData["regNo" || ""]}
+            onChange={handleChange}
+            label="Vechile Reg. No."
+            fullWidth
+            autoComplete="family-name"
+            variant="standard"
+            
+          />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
@@ -206,6 +144,7 @@ const CarDetails = () => {
             type='date'
           />
         </Grid>
+        
         <Grid item xs={12} sm={4}>
           <TextField
             required
