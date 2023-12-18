@@ -1,4 +1,8 @@
 import React,{useState} from "react";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { FaRegCheckCircle } from "react-icons/fa";
+
+
 import { Carousel } from "react-bootstrap";
 
 const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
@@ -7,17 +11,16 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
-     // console.log("XYZ",make)
     return (
-        <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+        <div className="max-w-sm bg-white m-4 px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
       {/* <h3 className="mb-3 text-xl font-bold text-indigo-600">Beginner Friendly</h3> */}
       <div className="relative">
                              <Carousel activeIndex={index} onSelect={handleSelect}>
-                                 <Carousel.Item interval={500}>
+                                 <Carousel.Item >
                                      <div className='w-screen h-40'>
 
                                          <img
-                                                className='w-full h-full object-cover'
+                                                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
                                                 src="/images/front.png"
                                                 alt="Third slide"
                                             />
@@ -30,92 +33,65 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
                                             </p>
                                         </Carousel.Caption> */}
                                     </Carousel.Item>
-                                    <Carousel.Item interval={500}>
+                                    <Carousel.Item >
                                         <div className='w-screen h-40'>
 
                                             <img
-                                                className='w-full	h-full object-cover'
-                                                src="/images/rear.png"
+                                                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                                                src="/images/front.png"
                                                 alt="Third slide"
                                             />
                                         </div>
 
-                                        {/* <Carousel.Caption>
-                                            <h3>Third slide label</h3>
-                                            <p>
-                                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                            </p>
-                                        </Carousel.Caption> */}
                                     </Carousel.Item>
-                                    <Carousel.Item interval={500}>
+                                    <Carousel.Item >
                                         <div className='w-screen h-40'>
 
                                             <img
-                                                className='w-full	h-full object-cover'
-                                                src="/images/bonnet.png"
+                                               className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                                                src="/images/front.png"
                                                 alt="Third slide"
                                             />
                                         </div>
 
-                                        {/* <Carousel.Caption>
-                                            <h3>Third slide label</h3>
-                                            <p>
-                                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                            </p>
-                                        </Carousel.Caption> */}
+                                       
                                     </Carousel.Item>
-                                    <Carousel.Item interval={500}>
+                                    <Carousel.Item >
                                         <div className='w-screen h-40'>
 
                                             <img
-                                                className='w-full	h-full object-cover'
-                                                src="/images/interrior.png"
+                                               className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                                                src="/images/front.png"
                                                 alt="Third slide"
                                             />
                                         </div>
 
-                                        {/* <Carousel.Caption>
-                                            <h3>Third slide label</h3>
-                                            <p>
-                                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                            </p>
-                                        </Carousel.Caption> */}
                                     </Carousel.Item>
                                 </Carousel>
         {/* <img className="w-full rounded-xl" src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Colors" /> */}
         
       </div>
+      <div className="flex flex-row">
+        <div className="w-1/2">
+
       <h1 className="cursor-pointer uppercase my-2"><span className="font-bold">{variant}</span></h1>
+        </div>
+        <div className="flex flex-row justify-end w-1/2">
+            <div className="flex flex-row gap-1 my-2 bg-blue-950 rounded-xl px-2 py-1 text-white text-xs">
+            <AiOutlineSafetyCertificate color="orange" size="16"/>
+            <h1 >Carlay Assured</h1>
+            </div>
+        </div>
+
+      </div>
+      
       <div className="flex gap-1 flex-wrap my-2">
         <p className="cursor-pointer uppercase text-sm"><span className="text-gray-500">REG.YEAR - </span><span className="font-bold">{mfg}</span> |&nbsp;</p>
         <p className="cursor-pointer uppercase text-sm"><span className="text-gray-500">KMS - </span><span className="font-bold">{km}</span> |&nbsp;</p>
         <p className="cursor-pointer uppercase text-sm"><span className="text-gray-500">FUEL TYPE - </span><span className="font-bold">{fuel}</span></p>
       </div>
       <div className="my-2">
-        {/* <div className="flex space-x-1 items-center">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </span>
-          <p>1:34:23 Minutes</p>
-        </div> */}
-        {/* <div className="flex space-x-1 items-center">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </span>
-          <p>3 Parts</p>
-        </div> */}
-        {/* <div className="flex space-x-1 items-center">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-          </span>
-          <p>Vanilla JS</p>
-        </div> */}
+       
         <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Click For More details</button>
       </div>
     </div>

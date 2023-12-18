@@ -162,6 +162,25 @@ const Footer = () => {
                   </span>
                   <span>+91-9766663308</span>
                </p>
+               <p
+                  className="flex items-center text-sm font-medium text-white dark:text-white"
+                  >
+                  <span className="mr-3 text-primary">
+                  <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                           d="M28 4.7998H3.99998C2.29998 4.7998 0.849976 6.1998 0.849976 7.9498V24.1498C0.849976 25.8498 2.24998 27.2998 3.99998 27.2998H28C29.7 27.2998 31.15 25.8998 31.15 24.1498V7.8998C31.15 6.1998 29.7 4.7998 28 4.7998ZM28 7.0498C28.05 7.0498 28.1 7.0498 28.15 7.0498L16 14.8498L3.84998 7.0498C3.89998 7.0498 3.94998 7.0498 3.99998 7.0498H28ZM28 24.9498H3.99998C3.49998 24.9498 3.09998 24.5498 3.09998 24.0498V9.2498L14.8 16.7498C15.15 16.9998 15.55 17.0998 15.95 17.0998C16.35 17.0998 16.75 16.9998 17.1 16.7498L28.8 9.2498V24.0998C28.9 24.5998 28.5 24.9498 28 24.9498Z"
+                           fill="currentColor"
+                           />
+                     </svg>
+                  </span>
+                  <span>carlayindia@gmail.com</span>
+               </p>
             </div>
          </div>
          <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
@@ -294,7 +313,7 @@ const Footer = () => {
                </h4>
                <div className="flex items-center mb-6">
                   <a
-                     href="javascript:void(0)"
+                     href="#"
                      className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-white hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                      >
                      <svg
@@ -309,7 +328,7 @@ const Footer = () => {
                      </svg>
                   </a>
                   <a
-                     href="javascript:void(0)"
+                     href="#"
                      className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-white hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                      >
                      <svg
@@ -324,7 +343,7 @@ const Footer = () => {
                      </svg>
                   </a>
                   <a
-                     href="javascript:void(0)"
+                     href="#"
                      className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-white hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                      >
                      <svg
@@ -339,7 +358,7 @@ const Footer = () => {
                      </svg>
                   </a>
                   <a
-                     href="javascript:void(0)"
+                     href="#"
                      className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-white hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                      >
                      <svg
