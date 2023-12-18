@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext,useEffect} from 'react';
 import { StepperContext } from '@/app/context/StepperContext'
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import axios from 'axios';
 
 const PersonalDetails = () => {
   const {userData,setUserData}=useContext(StepperContext)
@@ -16,6 +17,14 @@ const PersonalDetails = () => {
     const {name,value}=e.target;
     setUserData({...userData,[name]:value})
 }
+
+useEffect(() => {
+  axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/GetManufacturer").then((response) => {
+    console.log("URL Data",response.data);
+  });
+}, []);
+
+
   return (
     <div>
       <Grid container spacing={3}>
