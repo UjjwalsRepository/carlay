@@ -17,7 +17,7 @@
 }
 
 body {
-    font-family: "Barlow Condensed, arial";
+    /* font-family: "Barlow Condensed, arial"; */
   /* color: rgb(var(--foreground-rgb)); */
   /* background: linear-gradient(
       to bottom,
@@ -30,6 +30,6 @@ body {
     /* background-image: url("/images/bg.jpg");
     background-size: contain; */
 }
-#logo{
+/* #logo{
   color: #CEF0D4; font-family: 'Rouge Script', cursive; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34;
-}
+} */

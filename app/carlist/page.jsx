@@ -66,12 +66,12 @@ const Page = () => {
     //     fetchCars()
        
     // },[])
-    // useEffect(()=>{
-    //     axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/GetManufacturer")
-    //     .then((res)=>console.log("Result",res))
-    //     .catch((error)=>console.log(error))
+    useEffect(()=>{
+        axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarList")
+        .then((res)=>console.log("Result",res))
+        .catch((error)=>console.log(error))
        
-    // },[])
+    },[])
     
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);

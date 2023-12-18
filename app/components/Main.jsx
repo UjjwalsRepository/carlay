@@ -30,7 +30,7 @@ const Main = () => {
                                 <img src="/images/sell.jpg" class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
                             </div>
                             <div class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out">
-                            <Link href="/addcar">
+                            <Link href="/addcar1">
                                 <button className="btn btn-success">Sell Your Car</button>{' '}
                             </Link>
                             
