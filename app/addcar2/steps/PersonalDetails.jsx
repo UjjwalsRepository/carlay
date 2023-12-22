@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import axios from 'axios';
-import { Col, Form, Row } from 'react-bootstrap';
 
 const PersonalDetails = () => {
   const {userData,setUserData}=useContext(StepperContext)
@@ -31,66 +30,7 @@ useEffect(() => {
 
   return (
     <div>
-
-        <Row className="bg-blue-900 rounded-lg p-3">
-          <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
-                  <Form.Label className="text-white">First Name</Form.Label>
-                  <Form.Control
-                  name="firstName"
-                  value={userData["firstName" || ""]}
-                  onChange={handleChange}
-                type="text"
-                placeholder="Enter First Name"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-                </Form.Group>
-              </Col>
-          <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
-                  <Form.Label className="text-white">Last Name</Form.Label>
-                  <Form.Control
-                  name="lastName"
-                  value={userData["lastName" || ""]}
-                  onChange={handleChange}
-                type="text"
-                placeholder="Enter Last Name"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-                </Form.Group>
-              </Col>
-          <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
-                  <Form.Label className="text-white">Mobile No</Form.Label>
-                  <Form.Control
-                  name="mobileNo"
-                  value={userData["mobileNo" || ""]}
-                  onChange={handleChange}
-                type="number"
-                placeholder="Enter Mobile No"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-                </Form.Group>
-              </Col>
-          <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
-                  <Form.Label className="text-white">Email</Form.Label>
-                  <Form.Control
-                  name="email"
-                  value={userData["email" || ""]}
-                  onChange={handleChange}
-                type="email"
-                placeholder="Enter email"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-                </Form.Group>
-              </Col>
-        </Row>
-      {/* <Grid container spacing={3}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField
             required
@@ -146,7 +86,7 @@ useEffect(() => {
           />
         </Grid>
        
-      </Grid> */}
+      </Grid>
     </div>
   )
 }

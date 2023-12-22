@@ -3,64 +3,64 @@ import './carlist.css'
 const Page = () => {
     return (
         <>
-            <div class="container">
-                <div class="carousel">
-                    <div id="party" class="item">
+            <div className="container">
+                <div className="carousel">
+                    <div id="party" className="item">
                         <div>
-                            <i class="fa fa-glass"></i>
+                            <i className="fa fa-glass"></i>
                         </div>
                         <h1>Party</h1>
                     </div>
-                    <div id="mood" class="item">
+                    <div id="mood" className="item">
                         <div>
-                            <i class="fa fa-cube"></i>
+                            <i className="fa fa-cube"></i>
                         </div>
                         <h1>Mood</h1>
                     </div>
-                    <div id="ambient" class="item">
+                    <div id="ambient" className="item">
                         <div>
-                            <i class="fa fa-leaf"></i>
+                            <i className="fa fa-leaf"></i>
                         </div>
                         <h1>Ambient</h1></div>
-                    <div id="work" class="item">
+                    <div id="work" className="item">
                         <div>
-                            <i class="fa fa-coffee"></i>
+                            <i className="fa fa-coffee"></i>
                         </div>
                         <h1>Work</h1>
                     </div>
-                    <div id="world" class="item">
+                    <div id="world" className="item">
                         <div>
-                            <i class="fa fa-globe"></i>
+                            <i className="fa fa-globe"></i>
                         </div>
                         <h1>World</h1>
                     </div>
-                    <div id="party" class="item">
+                    <div id="party" className="item">
                         <div>
-                            <i class="fa fa-glass"></i>
+                            <i className="fa fa-glass"></i>
                         </div>
                         <h1>Party</h1>
                     </div>
-                    <div id="mood" class="item">
+                    <div id="mood" className="item">
                         <div>
-                            <i class="fa fa-cube"></i>
+                            <i className="fa fa-cube"></i>
                         </div>
                         <h1>Mood</h1>
                     </div>
-                    <div id="ambient" class="item">
+                    <div id="ambient" className="item">
                         <div>
-                            <i class="fa fa-leaf"></i>
+                            <i className="fa fa-leaf"></i>
                         </div>
                         <h1>Ambient</h1>
                     </div>
-                    <div id="work" class="item">
+                    <div id="work" className="item">
                         <div>
-                            <i class="fa fa-coffee"></i>
+                            <i className="fa fa-coffee"></i>
                         </div>
                         <h1>Work</h1>
                     </div>
-                    <div id="world" class="item">
+                    <div id="world" className="item">
                         <div>
-                            <i class="fa fa-globe"></i>
+                            <i className="fa fa-globe"></i>
                         </div>
                         <h1>World</h1>
                     </div>
