@@ -15,7 +15,15 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
         <div className="max-w-sm bg-white m-4 px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
       {/* <h3 className="mb-3 text-xl font-bold text-indigo-600">Beginner Friendly</h3> */}
       <div className="relative">
-                             <Carousel activeIndex={index} onSelect={handleSelect}>
+      <div className='w-screen h-40'>
+
+<img
+       className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+       src="/images/front.png"
+       alt="Third slide"
+   />
+</div>
+                             {/* <Carousel activeIndex={index} onSelect={handleSelect}>
                                  <Carousel.Item >
                                      <div className='w-screen h-40'>
 
@@ -26,12 +34,7 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
                                             />
                                         </div>
 
-                                        {/* <Carousel.Caption>
-                                            <h3>Third slide label</h3>
-                                            <p>
-                                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                            </p>
-                                        </Carousel.Caption> */}
+                                        
                                     </Carousel.Item>
                                     <Carousel.Item >
                                         <div className='w-screen h-40'>
@@ -67,9 +70,8 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel}) => {
                                         </div>
 
                                     </Carousel.Item>
-                                </Carousel>
-        {/* <img className="w-full rounded-xl" src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Colors" /> */}
-        
+                                </Carousel> */}
+       
       </div>
       <div className="flex flex-row">
         <div className="w-1/2">
