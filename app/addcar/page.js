@@ -31,6 +31,9 @@ const Page = () => {
     }
 
     const handleClick=(direction)=>{
+        if(currentStep==steps.length-1){
+            alert("This is Final stem")
+        }
         let newStep=currentStep;
 
         direction==="next"?newStep++:newStep--;
@@ -52,10 +55,12 @@ const Page = () => {
                 </StepperContext.Provider>
             </div>
         </div>
+        {currentStep !== steps.length &&
         <StepperControl
         handleClick={handleClick}
         currentStep={currentStep}
         steps={steps}/>
+        }
     </div>
   )
 }

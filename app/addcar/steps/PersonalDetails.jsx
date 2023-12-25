@@ -16,23 +16,24 @@ const PersonalDetails = () => {
   const {userData,setUserData}=useContext(StepperContext)
   const handleChange=(e)=>{
     const {name,value}=e.target;
-    setUserData({...userData,[name]:value})
+      setUserData({...userData,[name]:value})
+    
 }
 
-useEffect(() => {
-  axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/GetManufacturer").then((response) => {
-    console.log("URL Data",response.data);
-  });
+// useEffect(() => {
+//   axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/GetManufacturer").then((response) => {
+//     console.log("URL Data",response.data);
+//   });
   // axios.get("https://jsonplaceholder.typicode.com/todos").then((response) => {
   //   console.log("URL Data",response.data);
   // });
-}, []);
+// }, []);
 
 
   return (
     <div>
 
-        <Row className="bg-blue-900 rounded-lg p-3">
+        <Row className="bg-blue-900 rounded p-3">
           <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
                 <Form.Group>
                   <Form.Label className="text-white">First Name</Form.Label>

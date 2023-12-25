@@ -66,12 +66,12 @@ const Page = () => {
     //     fetchCars()
        
     // },[])
-    useEffect(()=>{
-        axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarList")
-        .then((res)=>console.log("Result",res))
-        .catch((error)=>console.log(error))
+    // useEffect(()=>{
+    //     axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarList")
+    //     .then((res)=>console.log("Result",res))
+    //     .catch((error)=>console.log(error))
        
-    },[])
+    // },[])
     
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -153,15 +153,16 @@ const Page = () => {
             
                 {filteredData?.map((item, index) => (
                         <div key={index}>
-                        <Link href={`/carlist/${index}`}>
+                        {/* <Link href={`/carlist/${index}`}> */}
                             <CarCard
                                 variant={item.variantname}
                                 serial={item.serialnumber}
                                 mfg={item.manufacturingyear}
                                 km={item.kilometer}
                                 transmission={item.transmission}
-                                fuel={item.fueltype} />
-                        </Link>
+                                fuel={item.fueltype}
+                                id={index} />
+                        {/* </Link> */}
                         </div>
                     ))}
             {/* </Carousel> */}

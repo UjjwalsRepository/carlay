@@ -9,8 +9,7 @@ const Page = () => {
                         className="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full" alt="" />
                     <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center holder bg-gray-900/75">
                         <div className="z-10 max-w-5xl px-4 mx-auto text-center">
-                            {/* <span className="text-xs font-semibold text-blue-400 uppercase">Knowledge is power</span> */}
-                            <h2
+                           <h2
                                 className="mt-2 mb-4 text-3xl font-bold leading-tight text-white md:text-4xl md:leading-tight lg:text-7xl lg:leading-tight g">
                                 ABOUT US
                             </h2>
@@ -20,13 +19,11 @@ const Page = () => {
                                 decision. That&#39;s why we&#39;re dedicated to providing a seamless and exceptional car buying experience.
                                 With a commitment to quality, transparency, and customer satisfaction, we stand out as a trusted
                                 name in the automotive industry.</p>
-                            {/* <a className="block px-5 py-3 text-sm font-semibold text-center text-indigo-500 transition duration-200 bg-white border border-white rounded md:inline-block hover:bg-indigo-50 hover:border-indigo-50"
-                        href="#"> Learn More </a> */}
+                           
                         </div>
                     </div>
                 </div>
             </section>
-            {/* <div className="grid grid-cols-1 lg:grid-cols-4  relative mt-0 lg:-mt-[90px]  z-10  rounded"> */}
             <section className="pb-10 bg-blueGray-200 -mt-24">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-wrap justify-center">
@@ -109,20 +106,7 @@ const Page = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="pt-6 w-full md:w-4/12 px-4 text-center hover:scale-105 transition duration-500">
-                                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                                    <div className="px-4 py-5 flex-auto">
-                                        <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                                            <i className="fas fa-fingerprint"></i>
-                                        </div>
-                                        <h6 className="text-xl font-semibold">Verified Company</h6>
-                                        <p className="mt-2 mb-4 text-blueGray-500">
-                                            Write a few lines about each one. A paragraph describing a
-                                            feature will be enough. Keep you user engaged!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> */}
+                          
                         </div>
                     </div>
 
