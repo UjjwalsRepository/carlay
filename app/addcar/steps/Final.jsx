@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import { StepperContext } from '@/app/context/StepperContext'
 const Final = () => {
   const {userData,setUserData}=useContext(StepperContext)
-  console.log("User-Data",userData);
+  // console.log("User-Data",userData);
   return (
     <>
       <div className="flex items-center justify-center rounded">

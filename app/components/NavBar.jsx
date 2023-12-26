@@ -9,7 +9,7 @@ const NavBar = () => {
         {title:"Home",link:"/"},
         {title:"About",link:"/about"},
         {title:"ContactUs",link:"/contact"},
-        // {title:"SellCar",link:"/addcar2"},
+        {title:"Admin",link:"/admin"},
         
     ]
     const [open,setOpen]=useState(false);

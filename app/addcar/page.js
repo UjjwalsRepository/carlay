@@ -6,7 +6,8 @@ import CarDetails from './steps/CarDetails';
 import PersonalDetails from './steps/PersonalDetails';
 import Final from './steps/Final';
 import { StepperContext } from '../context/StepperContext';
-
+import axios from 'axios';
+import toast from 'react-hot-toast';
 const Page = () => {
     const [currentStep, setCurrentStep]=useState(1);
     const [userData,setUserData]=useState('');
@@ -32,12 +33,39 @@ const Page = () => {
 
     const handleClick=(direction)=>{
         if(currentStep==steps.length-1){
-            alert("This is Final stem")
+            handleSubmit();
+            alert(userData.insuranceEndDate)
+
+            
         }
         let newStep=currentStep;
 
         direction==="next"?newStep++:newStep--;
         newStep>0 && newStep <= steps.length && setCurrentStep(newStep);
+    }
+    const handleSubmit=async()=>{
+        // e.preventDefault();
+        try {
+            let result = await axios.post(          
+              "http://localhost:8000/api/create",userData         
+              
+            );
+            alert("Inside function")
+          } catch (error) {
+            console.error(error);     
+          }
+        // alert("Inside function")
+        //  axios.post("http://localhost:8000/api/create",userData,
+        //  {
+        //     headers: {'Content-Type': 'application/json'}
+        //   })
+        //     .then((res)=>{
+        //         alert("Inside Post")
+        //         console.log(res)
+        //        toast.success("Car added successfully",{position:'top-center'})
+        //         // navigate('/')
+        //     })
+        //     .catch((error)=>console.log(error))
     }
 
   return (

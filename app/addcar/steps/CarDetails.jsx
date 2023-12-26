@@ -146,7 +146,7 @@ const CarDetails = () => {
               
               </Form.Group>
             </Col>
-            <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+            {/* <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
               <Form.Group>
                 <Form.Label className="text-white">RC Image</Form.Label>
                 <Form.Control
@@ -237,7 +237,7 @@ const CarDetails = () => {
             />
              
               </Form.Group>
-            </Col> 
+            </Col>  */}
           </Row>
        
         
