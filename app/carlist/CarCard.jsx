@@ -6,7 +6,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { Carousel } from "react-bootstrap";
 import Link from "next/link";
 
-const CarCard = ({variant,serial,mfg,km,transmission,fuel,id}) => {
+const CarCard = ({manufacturer,variant,mfg,km,fuel,id}) => {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex) => {
@@ -24,60 +24,13 @@ const CarCard = ({variant,serial,mfg,km,transmission,fuel,id}) => {
        alt="Third slide"
    />
 </div>
-                             {/* <Carousel activeIndex={index} onSelect={handleSelect}>
-                                 <Carousel.Item >
-                                     <div className='w-screen h-40'>
-
-                                         <img
-                                                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-                                                src="/images/front.png"
-                                                alt="Third slide"
-                                            />
-                                        </div>
-
-                                        
-                                    </Carousel.Item>
-                                    <Carousel.Item >
-                                        <div className='w-screen h-40'>
-
-                                            <img
-                                                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-                                                src="/images/front.png"
-                                                alt="Third slide"
-                                            />
-                                        </div>
-
-                                    </Carousel.Item>
-                                    <Carousel.Item >
-                                        <div className='w-screen h-40'>
-
-                                            <img
-                                               className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-                                                src="/images/front.png"
-                                                alt="Third slide"
-                                            />
-                                        </div>
-
-                                       
-                                    </Carousel.Item>
-                                    <Carousel.Item >
-                                        <div className='w-screen h-40'>
-
-                                            <img
-                                               className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-                                                src="/images/front.png"
-                                                alt="Third slide"
-                                            />
-                                        </div>
-
-                                    </Carousel.Item>
-                                </Carousel> */}
+                            
        
       </div>
       <div className="flex flex-row">
         <div className="w-1/2">
 
-      <h1 className="cursor-pointer uppercase my-2"><span className="font-bold">{variant}</span></h1>
+      <h1 className="cursor-pointer uppercase my-2"><span className="font-bold">{manufacturer}&nbsp;-&nbsp;{variant}</span></h1>
         </div>
         <div className="flex flex-row justify-end w-1/2">
             <div className="flex flex-row gap-1 my-2 bg-blue-950 rounded-xl px-2 py-1 text-white text-xs">

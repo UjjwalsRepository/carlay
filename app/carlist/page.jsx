@@ -43,51 +43,40 @@ const Page = () => {
     const [carList,setCarList]=useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [showModal,setShowModal]=useState(true);
-    // useEffect(()=>{
-    //     const fetchCars=async()=>{
-    //         const options = {
-    //             method: 'GET',
-    //             url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
-    //             params: {model: 'corolla'},
-    //             headers: {
-    //               'X-RapidAPI-Key': '62daf8cccamshc62096f7d242834p1d144djsna1486c849c4e',
-    //               'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
-    //             }
-    //           };
-              
-    //           try {
-    //               const response = await axios.request(options);
-    //               setCarList(response.data);
-    //           } catch (error) {
-    //               console.error(error);
-    //           }
-    //     }
-
-    //     fetchCars()
-       
-    // },[])
-    // useEffect(()=>{
-    //     axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarList")
-    //     .then((res)=>console.log("Result",res))
-    //     .catch((error)=>console.log(error))
-       
-    // },[])
+    const [data,setData]=useState([])
+     // Function to fetch data using Axios
+  const fetchData = async () => {
+     await axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarList")
+        .then((res)=>{
+            setData(res.data.sellaCarModelList);
+            
+        }
+        )
+        .catch((error)=>{
+            // console.log(error)
+            console.error('Error:', error);
+            if (error.response) {
+              console.error('Response data:', error.response.data);
+              console.error('Response status:', error.response.status);
+              console.error('Response headers:', error.response.headers);
+            }
+        })
+   
+  };
     
+    useEffect(()=>{
+       
+        fetchData();
+        
+    },[])
+  
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
       };
-      const filteredData = carData.filter((item) =>
-      item.variantname.toLowerCase().includes(searchTerm.toLowerCase())
+      const filteredData = data.filter((item) =>
+      item.variantName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const slideLeft=()=>{
-        var slider=document.getElementById('slider');
-        slider.scrollLeft=slider.scrollLeft-500;
-    }
-    const slideRight=()=>{
-        var slider=document.getElementById('slider');
-        slider.scrollLeft=slider.scrollLeft+500;
-    }
     return (
         <>
         <ModalPopup/>
@@ -127,41 +116,20 @@ const Page = () => {
                 </div>
             </div>
         
-            {/* <div classNameName="relative flex items-center">
-                <MdChevronLeft classNameName='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} size={40}/>
-                <div id="slider" classNameName='flex w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
-                {filteredData?.map((item, index) => (
-                        <div key={index}>
-                        <Link href={`/carlist/${index}`}>
-                            <CarCard
-                                variant={item.variantname}
-                                serial={item.serialnumber}
-                                mfg={item.manufacturingyear}
-                                km={item.kilometer}
-                                transmission={item.transmission}
-                                fuel={item.fueltype} />
-                        </Link>
-                        </div>
-                    ))}
-                    
-                </div>
-                <MdChevronRight classNameName='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight} size={40}/>
-            </div> */}
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="flex justify-center items-center">
             <div className="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-1 space-y-4 md:space-y-0 ">
             {/* <Carousel showDots={true}  responsive={responsive}> */}
             
                 {filteredData?.map((item, index) => (
-                        <div key={index}>
+                        <div key={item.id}>
                         {/* <Link href={`/carlist/${index}`}> */}
                             <CarCard
-                                variant={item.variantname}
-                                serial={item.serialnumber}
-                                mfg={item.manufacturingyear}
-                                km={item.kilometer}
-                                transmission={item.transmission}
-                                fuel={item.fueltype}
-                                id={index} />
+                                manufacturer={item.manufacturerName}
+                                variant={item.variantName}
+                                mfg={item.yom}
+                                km={item.kmReading}
+                                fuel={item.fuel_Type}
+                                id={item.id} />
                         {/* </Link> */}
                         </div>
                     ))}

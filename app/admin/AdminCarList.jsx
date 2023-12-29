@@ -5,19 +5,19 @@ import axios from 'axios'
 // import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const AdminCarList = () => {
 
-    const [data,setData]=useState([])
+    // const [data,setData]=useState([])
+    
 
+    // useEffect(()=>{
+    //     axios.get("http://localhost:8000/adminapi/getAllCar")
+    //     .then((res)=>setData(res.data))
+    //     .catch((error)=>console.log(error))
 
-    useEffect(()=>{
-        axios.get("http://localhost:8000/adminapi/getAllCarr")
-        .then((res)=>setData(res.data))
-        .catch((error)=>console.log(error))
-
-    },[])
-    console.log("Data",data)
+    // },[])
+    // console.log("Data",data)
   return (
     <div className='d-flex flex-column  align-items-center bg-light vh-100'>
-        <h1>List of User Cars</h1>
+        <h1 className='text-4xl text-blue-900'>List of Admin Cars</h1>
         <div className='w-full overflow-x-auto rounded bg-white border shadow p-4'>
             {/* <div className='d-flex justify-content-end'><Link to="/create" className='btn btn-success'>Add+</Link></div> */}
             <table className='table table-striped'>
@@ -40,7 +40,7 @@ const AdminCarList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item,i)=>(
+                    {/* {data.map((item,i)=>(
                         <tr key={data._id}>
                             <td>{i+1}</td>
                             <td>{item.manufacturer}</td>
@@ -57,12 +57,12 @@ const AdminCarList = () => {
                             <td>{item.kilometer}</td>
                             <td>{item.expectedPrice}</td>
                             <td>
-                               {/* <EditIcon/> */}
-                               {/* <DeleteForeverIcon/> */}
+                               <EditIcon/> 
+                               <DeleteForeverIcon/> 
                             </td>
                            
                         </tr>
-                    ))}
+                    ))} */}
                 </tbody>
             </table>
         </div>

@@ -46,26 +46,16 @@ const Page = () => {
     const handleSubmit=async()=>{
         // e.preventDefault();
         try {
+            alert(typeof(userData))
             let result = await axios.post(          
-              "http://localhost:8000/api/create",userData         
+              "http://localhost:8000/api/create",userData  
               
             );
             alert("Inside function")
           } catch (error) {
-            console.error(error);     
+            console.error(error);
           }
-        // alert("Inside function")
-        //  axios.post("http://localhost:8000/api/create",userData,
-        //  {
-        //     headers: {'Content-Type': 'application/json'}
-        //   })
-        //     .then((res)=>{
-        //         alert("Inside Post")
-        //         console.log(res)
-        //        toast.success("Car added successfully",{position:'top-center'})
-        //         // navigate('/')
-        //     })
-        //     .catch((error)=>console.log(error))
+        
     }
 
   return (
