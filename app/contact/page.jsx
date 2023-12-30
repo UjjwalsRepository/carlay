@@ -145,6 +145,9 @@ const Page = () => {
           <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
         </GoogleMap>
       )} */}
+               <img
+               src="./images/location.png" alt="Location"
+               />
                {/* <form>
                   <div className="mb-6">
                      <input
