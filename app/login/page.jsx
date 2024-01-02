@@ -17,13 +17,13 @@ const Login = () => {
            <div class="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
       <div class="flex items-center justify-center w-full pt-6 pb-20">
         
-        <div className="bg-white rounded px-4 py-2" >
+        <div className="bg-white opacity-90 rounded px-4 py-2 w-1/4" >
 
       {isLoggedIn?<SignIn/>:<SignUp/>}
       {/*  */}
       
 
-<p className="text-center">Need an account? <span  className="text-blue-500 hover:text-blue-700 font-semibold">Sign Up</span></p>
+<p className="text-center">{isLoggedIn?"Need an account?":"Already have an account?"} <span onClick={()=>{setIsLoggedIn(!isLoggedIn)}} className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer">{isLoggedIn?"Sign Up":"Sign In"}</span></p>
 
 
 </div>

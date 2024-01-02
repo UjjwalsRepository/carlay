@@ -3,7 +3,7 @@ import React from 'react'
 const SignUp = () => {
   return (
     <div>
-         <h1 className="text-4xl md:text-4xl font-bold text-center">Sign Up</h1>
+         <h1 className="text-2xl md:text-2xl font-bold text-center">Sign Up</h1>
 
 <form className="mt-2" action="#" method="POST">
   <div>
@@ -24,7 +24,7 @@ const SignUp = () => {
 
 
   <button type="submit" className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
-        px-4 py-2 mt-2">Sign Up</button>
+        px-4 py-2 mt-4">Sign Up</button>
 </form>
 
 <hr className="my-2 border-gray-300 w-full"/>
