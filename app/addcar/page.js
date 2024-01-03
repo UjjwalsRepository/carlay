@@ -10,7 +10,21 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 const Page = () => {
     const [currentStep, setCurrentStep]=useState(1);
-    const [userData,setUserData]=useState('');
+    const [userData,setUserData]=useState({
+        manufacturerName: "Test",
+        variantName: "Test",
+        yom: "2023",
+        reg_city: "Test",
+        allSidePhoto: "Test",
+        created_by: "Admin",
+        modified_by: "Admin",
+        id: "0",
+        ownership: "1",
+        expected_Price: "00000",
+        state: "Test",
+        isReqApproved:"0",
+        isCarLayAssured:"0"
+    });
     const [finalData,setFinalData]=useState([]);
 
     const steps=[
@@ -34,7 +48,7 @@ const Page = () => {
     const handleClick=(direction)=>{
         if(currentStep==steps.length-1){
             handleSubmit();
-            alert(userData.insuranceEndDate)
+            // alert(userData.insuranceEndDate)
 
             
         }
@@ -46,11 +60,12 @@ const Page = () => {
     const handleSubmit=async()=>{
         // e.preventDefault();
         try {
-            alert(typeof(userData))
+           
             let result = await axios.post(          
-              "http://localhost:8000/api/create",userData  
+              "http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/SellaCarRequest",userData  
               
             );
+            console.log("Post Message",result.message)
             alert("Inside function")
           } catch (error) {
             console.error(error);

@@ -4,11 +4,11 @@ const Final = () => {
   const {userData,setUserData}=useContext(StepperContext)
   console.log("User-Data",userData);
 
-useEffect(() => {
-  setTimeout(function() {
-    window.location.replace('/');
-  }, 5000);
-},[])
+// useEffect(() => {
+//   setTimeout(function() {
+//     window.location.replace('/');
+//   }, 5000);
+// },[])
 
   return (
     <>

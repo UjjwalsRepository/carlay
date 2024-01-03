@@ -38,6 +38,12 @@ const page = ({params}) => {
        fetchData();
        
    },[])
+
+   const handleChange=(e)=>{
+    const {name,value}=e.target;
+    setData({...data,[name]:value});
+   }
+
   return (
     <>
         {loading?
@@ -63,13 +69,15 @@ const page = ({params}) => {
               
             </Col>
           </Row>
-          <Row className="w-full bg-blue-900 p-3">
+          <Row className=" bg-blue-900 rounded-lg p-3">
         <Col xl={4} lg={4} md={4} sm={6}>
               <Form.Group>
                 <Form.Label className="text-white">Manufacturer</Form.Label>
                 <Form.Select 
-                name="manufacturer"
+                name="manufacturerName"
                 value={data.manufacturerName}
+                onChange={handleChange}
+
                 // defaultValue={data.manufacturerName}
                 >
                   
@@ -85,9 +93,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Variant Name</Form.Label>
                 <Form.Control
-                name="variant"
+                name="variantName"
                 value={data.variantName}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter Variant Name"
               aria-describedby="inputGroupPrepend"
@@ -99,9 +107,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Year of Manufacture</Form.Label>
                 <Form.Select 
-                name="fuel"
+                name="yom"
                 value={data.yom}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                   <option selected>{data.yom}</option>
                   <option >Petrol</option>
@@ -115,9 +123,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Fuel Type</Form.Label>
                 <Form.Select 
-                name="fuel"
+                name="fuel_Type"
                 value={data.fuel_Type}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                   <option selected>{data.fuel_Type}</option>
                   <option >Petrol</option>
@@ -133,7 +141,7 @@ const page = ({params}) => {
                 <Form.Select 
                 name="transmission"
                 value={data.transmission}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                   <option selected={data.transmission}>Select Transmission</option>
                   <option>Manual</option>
@@ -147,7 +155,7 @@ const page = ({params}) => {
                 <Form.Select 
                 name="accidental"
                 value={data.accidental}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                   <option selected>{data.accidental}</option>
                   <option>No</option>
@@ -161,7 +169,7 @@ const page = ({params}) => {
                 <Form.Select 
                 name="insurance"
                 value={data.insurance}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                   <option selected>{data.insurance}</option>
                   <option>Yes</option>
@@ -173,9 +181,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Vechile Reg. State</Form.Label>
                 <Form.Control
-                name="regState"
+                name="state"
                 value={data.state}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter vechile reg. state"
               aria-describedby="inputGroupPrepend"
@@ -188,9 +196,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Vechile Reg. City</Form.Label>
                 <Form.Control
-                name="regCity"
+                name="reg_city"
                 value={data.reg_city}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter vechile reg. city"
               aria-describedby="inputGroupPrepend"
@@ -205,7 +213,7 @@ const page = ({params}) => {
                 <Form.Select 
                 name="ownership"
                 value={data.ownership}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                   <option selected>{data.ownership}</option>
                   <option>1</option>
@@ -218,9 +226,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Vechile current location.</Form.Label>
                 <Form.Control
-                name="location"
+                name="v_location"
                 value={data.v_location}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter vechile current location."
               aria-describedby="inputGroupPrepend"
@@ -233,9 +241,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Vechile Reg. No.</Form.Label>
                 <Form.Control
-                name="regNo"
+                name="reg_num"
                 value={data.reg_num}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter vechile reg. no"
               aria-describedby="inputGroupPrepend"
@@ -248,9 +256,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Kilometer Reading</Form.Label>
                 <Form.Control
-                name="km"
+                name="kmReading"
                 value={data.kmReading}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter kilometer reading"
               aria-describedby="inputGroupPrepend"
@@ -262,9 +270,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Vechile Expected Price</Form.Label>
                 <Form.Control
-                name="expPrice"
+                name="expected_Price"
                 value={data.expected_Price}
-                // onChange={handleChange}
+                onChange={handleChange}
               type="text"
               placeholder="Please enter expected price"
               aria-describedby="inputGroupPrepend"
@@ -277,9 +285,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Approved</Form.Label>
                 <Form.Select 
-                name="approved"
+                name="isReqApproved"
                 value={data.isReqApproved}
-                // onChange={handleChange}
+                onChange={handleChange}
                 >
                  
                   <option selected>{data.isReqApproved}</option>
@@ -292,9 +300,9 @@ const page = ({params}) => {
               <Form.Group>
                 <Form.Label className="text-white">Carlay Assured</Form.Label>
                 <Form.Select 
-                name="assured"
+                name="isCarLayAssured"
                 value={data.isCarLayAssured}
-                // onChange={handleChange}
+                onChange={handleChange}
               
                 >
                  <option selected>{data.isCarLayAssured}</option>
