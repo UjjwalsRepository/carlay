@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import axios from 'axios';
 import Link from 'next/link';
-const page = ({params}) => {
+const Page = ({params}) => {
   let id=params.id;
   const router = useRouter()
   const [data,setData] = useState([]);
@@ -412,4 +412,4 @@ const page = ({params}) => {
   )
 }
 
-export default page
+export default Page
