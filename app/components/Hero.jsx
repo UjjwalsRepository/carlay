@@ -15,17 +15,14 @@ function Hero() {
     <Carousel   onSelect={handleSelect}>
       <Carousel.Item >
         <div className='w-screen h-96'>
-
       <img
           className='w-full h-full object-cover'
-          src="/images/slider3.jpeg"
+          src="/images/slider4.jpeg"
           alt="Third slide"
         />
         </div>
-
         <Carousel.Caption className='p-2 bg-white opacity-70'>
           <h1 className='text-xl text-black font-bold'>Our Values</h1>
-          
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500}>
@@ -33,7 +30,7 @@ function Hero() {
 
       <img
           className='w-full	h-full object-cover'
-          src="/images/slider4.jpeg"
+          src="/images/slider5.jpg"
           alt="Third slide"
         />
         </div>
@@ -48,7 +45,7 @@ function Hero() {
 
       <img
           className='w-full	h-full object-cover'
-          src="/images/slider5.jpeg"
+          src="/images/slider3.jpeg"
           alt="Third slide"
         />
         </div>

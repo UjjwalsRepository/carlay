@@ -4,11 +4,11 @@ const Footer = () => {
     return (
         < div>
 <footer
-   className="relative z-10 bg-gray-800 dark:bg-gray-800 pt-20 lg:pt-[40px] text-white"
+   className="relative z-10 bg-gray-800 dark:bg-gray-800 pt-4  text-white"
    >
-   <div className="container mx-auto">
+   <div className=" mx-auto">
       <div className="flex flex-wrap justify-between -mx-4">
-         <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
+         <div className="w-full px-4 sm:w-1/3 lg:w-3/12">
             <div className="w-full mb-10">
             <h4 className="text-lg font-extrabold text-white mb-9">
             CarLay
@@ -69,15 +69,7 @@ const Footer = () => {
                </p>
             </div>
          </div>
-         {/* <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
-            <div className="w-full mb-10">
-               <h4 className="text-lg font-semiboldtext-white mb-9">
-                  Resources
-               </h4>
-               
-            </div>
-         </div> */}
-         <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
+         <div className="w-full px-4 sm:w-1/3 lg:w-3/12">
             <div className="w-full mb-10">
                <h4 className="text-lg font-semiboldtext-white mb-9">
                   Address
@@ -101,7 +93,7 @@ const Footer = () => {
                </p>
             </div>
          </div>
-         <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
+         <div className="w-full px-4 sm:w-1/3 lg:w-3/12">
             <div className="w-full mb-10">
                <h4 className="text-lg font-semiboldtext-white mb-9">
                   Quick Links
@@ -114,7 +106,7 @@ const Footer = () => {
                
             </div>
          </div>
-         <div className="w-full px-4 sm:w-1/2 lg:w-3/12">
+         <div className="w-full px-4 sm:w-1/3 lg:w-3/12">
             <div className="w-full mb-10">
                <h4 className="text-lg font-semibold text-white mb-9">
                   Follow Us On

@@ -89,7 +89,7 @@ const Page = ({ params }) => {
             <div>
             <div className="w-full h-auto flex flex-row">
                 <div className="w-1/3 m-4">
-                    <h1 className="text-2xl font-bold text-blue-900 italic">{data.manufacturerName}&nbsp;-&nbsp;{data.variantName}({data.yom})</h1>
+                    <h1 className="text-2xl font-bold text-blue-900">{data.manufacturerName}&nbsp;-&nbsp;{data.variantName}({data.yom})</h1>
                     <span className="text-2xl font-bold">{data.expected_Price}</span><span className='font-light opacity-50 text-sm italic'>&nbsp;EMI STARTS @000000</span>
                 </div>
                 <div className="w-1/3 m-2">
@@ -100,7 +100,7 @@ const Page = ({ params }) => {
                 </div>
                 <div className="flex justify-end w-1/3 m-2">
                     <div className='flex flex-column justify-center'>
-                        <Button className='bg-black border-none' as="a" onClick={() => setModalShow(true)}>Reserv This Car</Button>
+                        <Button className='bg-[#ffb118] border-none' as="a" onClick={() => setModalShow(true)}>Reserv This Car</Button>
                     </div>
                 </div>
             </div>
@@ -194,67 +194,67 @@ const Page = ({ params }) => {
                         <MdPrecisionManufacturing size={40} className='border-2 border-black	rounded p-2'/>
                      
                         <p className='font-light'>Manufacturer </p>
-                        <p className='font-bold	text-blue-900 italic'>{data.manufacturerName}</p>
+                        <p className='font-bold	text-blue-900'>{data.manufacturerName}</p>
                     </div>
                     <div className=' m-10'>
                         <GiCityCar size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Variant</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.variantName}</p>
+                        <p className='font-bold	text-blue-900'>{data.variantName}</p>
                     </div>
                     <div className=' m-10'>
                         <FaRegCalendarCheck size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Mfg Year</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.yom}</p>
+                        <p className='font-bold	text-blue-900'>{data.yom}</p>
                     </div>
                     <div className=' m-10'>
                         <BsPersonPlus size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Ownership</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.ownership}</p>
+                        <p className='font-bold	text-blue-900'>{data.ownership}</p>
                     </div>
                     <div className=' m-10'>
                         <MdAppRegistration size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Reg. No.</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.reg_num}</p>
+                        <p className='font-bold	text-blue-900'>{data.reg_num}</p>
                     </div>
                     <div className=' m-10'>
                         <MdOutlineLocationOn size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Location</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.v_location}</p>
+                        <p className='font-bold	text-blue-900'>{data.v_location}</p>
                     </div>
                     <div className=' m-10'>
                         <FaCity size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Reg. State</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.state}</p>
+                        <p className='font-bold	text-blue-900'>{data.state}</p>
                     </div>
                     <div className=' m-10'>
                         <BsFillFuelPumpFill size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Fuel Type</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.fuel_Type}</p>
+                        <p className='font-bold	text-blue-900'>{data.fuel_Type}</p>
                     </div>
                     <div className=' m-10'>
                         <GrManual size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Transmission </p>
-                        <p className='font-bold	text-blue-900 italic'>{data.transmission}</p>
+                        <p className='font-bold	text-blue-900'>{data.transmission}</p>
                     </div>
                     <div className=' m-10'>
                         <FaCarCrash size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Accidental </p>
-                        <p className='font-bold	text-blue-900 italic'>{data.accidental}</p>
+                        <p className='font-bold	text-blue-900'>{data.accidental}</p>
                     </div>
                     <div className=' m-10'>
                         <SiFsecure size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Insurance</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.insurance}</p>
+                        <p className='font-bold	text-blue-900'>{data.insurance}</p>
                     </div>
                     <div className=' m-10'>
                         <FaTachometerAlt size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>KM Reading</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.kmReading}&nbsp;Km</p>
+                        <p className='font-bold	text-blue-900'>{data.kmReading}&nbsp;Km</p>
                     </div>
                     <div className=' m-10'>
                         <IoPricetagsOutline size={40} className='border-2 border-black	rounded p-2'/>
                         <p className='font-light'>Expected Price</p>
-                        <p className='font-bold	text-blue-900 italic'>{data.expected_Price}</p>
+                        <p className='font-bold	text-blue-900'>{data.expected_Price}</p>
                     </div>
 
                 </div>

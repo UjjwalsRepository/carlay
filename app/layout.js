@@ -5,6 +5,7 @@ import './globals.css'
 // import { Inter } from 'next/font/google'
 
 import { Roboto } from 'next/font/google'
+import NewFooter from './components/NewFooter'
  
 const roboto = Roboto({
   weight: '400',
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <Toaster position='top-center'/>
         {children}
         <Footer/>
+        {/* <NewFooter/> */}
       </body>
     </html>
   )
