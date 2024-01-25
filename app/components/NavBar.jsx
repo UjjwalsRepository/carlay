@@ -1,24 +1,67 @@
 "use client"
 import Link from 'next/link'
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import {FaBars,FaTimes} from "react-icons/fa"
 import { IoHome } from "react-icons/io5";
+import { UserContext } from '../context/UserContext';
+import toast from 'react-hot-toast';
+
 
 const NavBar = () => {
+    const {userInfo,updateUserInfo}=useContext(UserContext);
+    const logOut={
+        name: "",
+        email: "",
+        mobileNo: "",
+        userType: "",
+        message: ""
+      }
+    // console.log("Nav Bar",userInfo)
     const navlinks=[
         {title:"Home",link:"/"},
+        // {title:"ListOfCars",link:"/listofcar"},
+        // {title:"AddCar",link:"/addcar1"},
+        {title:"About",link:"/about"},
+        {title:"Contact Us",link:"/contact"},
+        // {title:"Admin",link:"/admin"},
+        {title:"Login",link:"/login"},
+        
+    ]
+    const userlinks=[
+        {title:"Home",link:"/"},
+        // {title:"ListOfCars",link:"/listofcar"},
+        // {title:"AddCar",link:"/addcar1"},
+        {title:"About",link:"/about"},
+        {title:"Contact Us",link:"/contact"},
+        // {title:"Admin",link:"/admin"},
+        {title:"Logout",link:""},
+        
+    ]
+    const adminlinks=[
+        {title:"Home",link:"/"},
+        // {title:"ListOfCars",link:"/listofcar"},
+        // {title:"AddCar",link:"/addcar1"}, 
         {title:"About",link:"/about"},
         {title:"Contact Us",link:"/contact"},
         {title:"Admin",link:"/admin"},
-        {title:"Login",link:"/login"},
+        {title:"Logout",link:""},
         
     ]
     const [open,setOpen]=useState(false);
     const handleMenu=()=>{
         setOpen((prev)=>!prev)
     }
+
+    const logOutHandler=()=>{
+        // alert("Logout Clicked")
+        updateUserInfo(logOut)
+        toast("User Logged Out Successfully")
+    } 
+    
+        
+
   return (
-    <div className='bg-blue-950'>
+    <div className='bg-blue-950 overflow-hidden'>
         <div className='m-auto px-6 sm:px-6 lg:px-8'>
             <div className="flex items-center justify-between h-20">
                     <div className="flex items-center">
@@ -30,7 +73,38 @@ const NavBar = () => {
                     {/* NavLinks */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            {navlinks.map((link,index)=>(
+                            {userInfo.userType==='User'?userlinks.map((link,index)=>(
+                                <>
+                                {link.link!==""?(
+                                    <Link key={index}
+                                    href={link.link}
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium'>
+                                        {link.title}
+                                    </Link>
+                                ):(
+                                    <span onClick={logOutHandler} 
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium cursor-pointer'>
+                                    {link.title}
+                                    </span>
+                                )}
+                                </>
+                               
+                            )):(userInfo.userType==='Admin')?adminlinks.map((link,index)=>(
+                                <>
+                                {link.link!==""?(
+                                    <Link key={index}
+                                    href={link.link}
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium'>
+                                        {link.title}
+                                    </Link>
+                                ):(
+                                    <span onClick={logOutHandler} 
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium cursor-pointer'>
+                                    {link.title}
+                                    </span>
+                                )}
+                                </>
+                            )):navlinks.map((link,index)=>(
                                 <Link key={index}
                                 href={link.link}
                                 className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium'>
@@ -52,11 +126,57 @@ const NavBar = () => {
                 {open?(
                     <div className="md:hidden">
                         <div className="ox-2 pt-2 pb-3 space-y-1 sm:px-3 bg-red-400">
-                        {navlinks.map((link,index)=>(
+                        {/* {userInfo.userType==='User'?userlinks.map((link,index)=>(
                                 <Link key={index}
                                 href={link.link}
                                 className='text-white hover:bg-gray-700 hover:text-white
                                 block px-3 py-2 rounded-md text-base font-medium'>
+                                    {link.title}
+                                </Link>
+                            )):adminlinks.map((link,index)=>(
+                                <Link key={index}
+                                href={link.link}
+                                className='text-white hover:bg-gray-700 hover:text-white
+                                block px-3 py-2 rounded-md text-base font-medium'>
+                                    {link.title}
+                                </Link>
+                            ))} */}
+                            {userInfo.userType==='User'?userlinks.map((link,index)=>(
+                                <>
+                                {link.link!==""?(
+                                    <Link key={index}
+                                    href={link.link}
+                                    className='text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+                                    >
+                                        {link.title}
+                                    </Link>
+                                ):(
+                                    <span onClick={logOutHandler} 
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium cursor-pointer'>
+                                    {link.title}
+                                    </span>
+                                )}
+                                </>
+                               
+                            )):(userInfo.userType==='Admin')?adminlinks.map((link,index)=>(
+                                <>
+                                {link.link!==""?(
+                                    <Link key={index}
+                                    href={link.link}
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium'>
+                                        {link.title}
+                                    </Link>
+                                ):(
+                                    <span onClick={logOutHandler} 
+                                    className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium cursor-pointer'>
+                                    {link.title}
+                                    </span>
+                                )}
+                                </>
+                            )):navlinks.map((link,index)=>(
+                                <Link key={index}
+                                href={link.link}
+                                className='text-gray-300 transition-all duration-500 hover:text-[#ffb118] px-3 py-2 rounded-md text-md font-medium'>
                                     {link.title}
                                 </Link>
                             ))}

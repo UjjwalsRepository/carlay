@@ -1,11 +1,13 @@
+
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
-import {Toaster} from 'react-hot-toast'
+import { UserProvider } from './context/UserContext'
 import './globals.css'
+import { Toaster } from "react-hot-toast";
+
 // import { Inter } from 'next/font/google'
 
 import { Roboto } from 'next/font/google'
-import NewFooter from './components/NewFooter'
  
 const roboto = Roboto({
   weight: '400',
@@ -19,16 +21,16 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+ 
   return (
     <html lang="en">
       <body className={roboto.className}>
-        {/* <Header/> */}
-        {/* <Nav/> */}
-        <NavBar/>
-        <Toaster position='top-center'/>
-        {children}
-        <Footer/>
-        {/* <NewFooter/> */}
+        <UserProvider>
+          <NavBar/>
+          <Toaster/>
+          {children}
+          <Footer/>
+        </UserProvider>
       </body>
     </html>
   )

@@ -12,13 +12,13 @@ const Card = ({manufacturer,variant,regNo,id}) => {
                         <img src="/images/front.png" alt=""/>
                        
                     </div>
-                    <div className="flex flex-row items-center justify-between px-1 md:items-start">
+                    <div className="flex flex-col items-center justify-between px-1 md:items-start">
                         <div className="">
                             <p className="text-lg font-bold text-navy-700">{manufacturer}&nbsp;-&nbsp;{variant}</p>
                             <p className="mt-1 text-sm font-bold text-blue-900 md:mt-2">{regNo}</p>
                         </div>
                         <div className='flex gap-1'>
-                        <Link href={`/admin/${id}`}>
+                        <Link href={`/admin/${id}`} className='mt-2'>
 
                         <button className="cursor-pointer"><MdEdit size={30} className='border-2 border-blue-900 blue	rounded p-1'/></button>
                         </Link>

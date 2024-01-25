@@ -22,11 +22,11 @@ function ModalPopup() {
         aria-labelledby="example-custom-modal-styling-title"
         size="xl"
       >
-        <Modal.Header closeButton>
+        {/* <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
             Custom Modal Styling
           </Modal.Title>
-        </Modal.Header>
+        </Modal.Header> */}
         <Modal.Body>
         <h1 className='text-2xl font-bold'>Carlay Assured Cars</h1>
               <p>At Carlay assured we offer top-notch used cars that are as good as new. We carefully select each car

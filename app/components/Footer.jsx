@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         < div>
 <footer
-   className="relative z-10 bg-gray-800 dark:bg-gray-800 pt-4  text-white"
+   className="relative z-10 bg-gray-800 dark:bg-gray-800 pt-4  text-white overflow-hidden"
    >
    <div className=" mx-auto">
       <div className="flex flex-wrap justify-between -mx-4">

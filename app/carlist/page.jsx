@@ -1,5 +1,5 @@
 "use client"
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import CarCard from './CarCard';
@@ -11,14 +11,16 @@ import "react-multi-carousel/lib/styles.css";
 import {responsive } from "./data";
 import {MdChevronLeft,MdChevronRight,MdArrowBack } from 'react-icons/md'
 import { useRouter } from 'next/navigation'
-
-
+import { UserContext } from '../context/UserContext';
 
 
 // import fetchCars from '@/utils'
 const Page = () => {
+    const {userInfo,updateUserInfo}=useContext(UserContext);
+    console.log("Page-CarList",userInfo)
   const router = useRouter()
-
+  
+console.log("User-Info",userInfo)
     const [modalShow, setModalShow] = React.useState(false);
     const carData=[
         {make:"Maruti",variantname:"Swift",serialnumber:"0",manufacturingyear:"2020",kilometer:"20000",transmission:"Manual",fueltype:"Petrol"},
@@ -84,8 +86,8 @@ const Page = () => {
     return (
         <>
         <ModalPopup/>
-        <div className='bg-[#c4d5ed]'>
-            <div className="flex flex-row">
+        <div className='bg-[#c4d5ed] overflow-x-hidden min-h-screen'>
+            <div className="flex">
                 <div className='flex items-center justify-center w-1/4'>
                     <div className='bg-white rounded-3xl w-10 h-10 flex justify-center px-2 items-center'>
 
@@ -132,12 +134,12 @@ const Page = () => {
 
             </div>
         
-        <div className="flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
             <div className="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-1 space-y-4 md:space-y-0 ">
             {/* <Carousel showDots={true}  responsive={responsive}> */}
             
                 {filteredData?.map((item, index) => (
-                        <div key={item.id}>
+                        <div key={item.id} className=''>
                         {/* <Link href={`/carlist/${index}`}> */}
                             <CarCard
                                 manufacturer={item.manufacturerName}

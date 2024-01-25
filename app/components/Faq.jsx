@@ -4,18 +4,18 @@ const Faq = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen">
 	<div class="flex flex-col items-center">
-		<h2 class="font-bold text-xl tracking-tight">
+		<h2 class="font-bold text-xl tracking-tight mt-4">
 			FAQ
 		</h2>
-		<p class="text-neutral-500 text-xl mt-3">
+		<p class="text-neutral-500 text-xl mt-4">
 			Frequenty asked questions
 		</p>
 	</div>
-	<div className="grid divide-y divide-neutral-200 mx-auto mt-8">
+	<div className="grid divide-y divide-neutral-200 mx-auto my-8">
 		<div className="py-3">
 			<details className="group">
 				<summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-					<span>What types of used cars do you offer?</span>
+					<span className="text-blue-900">What types of used cars do you offer?</span>
 					<span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
               </span>
@@ -29,7 +29,7 @@ const Faq = () => {
 		<div className="py-3">
 			<details className="group">
 				<summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-					<span>What is the condition of your used cars?</span>
+					<span className="text-blue-900">What is the condition of your used cars?</span>
 					<span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
               </span>
@@ -44,7 +44,7 @@ const Faq = () => {
 		<div className="py-3">
 			<details className="group">
 				<summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-					<span>Do you offer any warranties on your used cars?</span>
+					<span className="text-blue-900">Do you offer any warranties on your used cars?</span>
 					<span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
               </span>
@@ -58,7 +58,7 @@ const Faq = () => {
 		<div className="py-3">
 			<details className="group">
 				<summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-					<span>Can I schedule a test drive?</span>
+					<span className="text-blue-900">Can I schedule a test drive?</span>
 					<span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
               </span>
@@ -72,7 +72,7 @@ const Faq = () => {
 		<div className="py-3">
 			<details className="group">
 				<summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-					<span>Do you provide financing options?</span>
+					<span className="text-blue-900">Do you provide financing options?</span>
 					<span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
               </span>
@@ -87,7 +87,7 @@ const Faq = () => {
 		<div className="py-3 mb-3">
 			<details className="group">
 				<summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-					<span>What steps do you take to ensure the cleanliness and safety of your vehicles?</span>
+					<span className="text-blue-900">What steps do you take to ensure the cleanliness and safety of your vehicles?</span>
 					<span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
 </svg>
