@@ -1,17 +1,22 @@
 "use client"
 import React,{useState,useEffect, useContext} from 'react';
-
-import UserCarList from './UserCarList';
-import AdminCarList from './AdminCarList';
 import Card from './Card';
 import axios from 'axios';
-import NewCard from './NewCard';
 import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/navigation';
 import Fallback from '../components/Fallback';
+import toast from 'react-hot-toast';
 
 const Page= ()=> {
   const router = useRouter()
+  const ISSERVER = typeof window === "undefined";
+  if(!ISSERVER) {
+    // Access localStorage
+    var loginData = JSON.parse(window.localStorage.getItem('loginData'));
+
+}
+  // var loginData = JSON.parse(localStorage.getItem('loginData'));
+
   const {userInfo,updateUserInfo}=useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [data,setData]=useState([])
@@ -39,25 +44,43 @@ const fetchData = async () => {
      })
 
 };
+
+const deleteCars=async(id)=>{
+  // alert(`${id} delete clicked`)
+        axios.post(`http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/DeleteACarRequest?id=${id}`)
+        .then((res)=>{
+            // console.log(res);
+            setData((prevData=>prevData.filter((data)=>data.id!==id)))
+            toast.success("User Deleted successfully",{position:'top-center'})
+            // navigate('/')
+        })
+        .catch((error)=>console.log(error))
+
+        // try {
+        //   const res=await axios.post(`http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/DeleteACarRequest?id=${id}`)
+        //   console.log("Delete Response",res)
+        // } catch (error) {
+        //   console.log("Error",error.message)
+        // }
+}
  
  useEffect(()=>{
    
      fetchData();
      
  },[])
-console.log("Data",data);
  const handleSearchChange = (event) => {
      setSearchTerm(event.target.value);
    };
    const filteredData = data.filter((item) =>
    item.variantName.toLowerCase().includes(searchTerm.toLowerCase())
  );
- console.log("filteredData",filteredData);
+//  console.log("filteredData",filteredData);
 
 
   return (
     <>
-        {userInfo.userType==='Admin'?(
+        {loginData?.userType==='Admin'?(
                 <div className="bg-white">
                 <div className="flex items-center justify-center">
                   <div className="flex rounded-full bg-[#c4d5ed] mt-2 px-2 w-full max-w-[600px]">
@@ -148,7 +171,7 @@ console.log("Data",data);
                   </div>
                 </div>
                 <div className="min-h-screen flex">
-                  <div className="flex flex-row flex-wrap">
+                  <div className="flex flex-row flex-wrap justify-center">
                     {filteredData?.map((item, index) => (
                       <div key={item.id}>
                         {/* <NewCard/> */}
@@ -157,6 +180,7 @@ console.log("Data",data);
                           variant={item.variantName}
                           regNo={item.reg_num}
                           id={item.id}
+                          deleteCars={deleteCars}
                         />
                       </div>
                     ))}

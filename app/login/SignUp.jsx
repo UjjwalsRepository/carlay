@@ -3,7 +3,7 @@ import React,{useState} from "react";
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast';
 import axios from "axios";
-const SignUp = () => {
+const SignUp = ({setIsLoggedIn,isLoggedIn}) => {
   const router=useRouter()
   const [signUpDetails,setSignUpDetails] =useState({
     loginEmail: "",
@@ -15,14 +15,18 @@ const SignUp = () => {
   const inputChangeHandler=(e)=>{
     const {name,value}=e.target
     setSignUpDetails({...signUpDetails,[name]:value});
-    console.log("SignUp Details",signUpDetails);
     
+  }
+
+  const goToLogin=()=>{
+    setIsLoggedIn(!isLoggedIn)
   }
   const signUpHandler=async(e)=>{
     e.preventDefault();
     try {         
-      let result = await axios.post("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/signUpUser",signUpDetails);
-      console.log("Post Message",result.data.message);
+      let result = await axios.post("http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/Carlay/signUpUser",signUpDetails);
+      toast.success(result.data.message)
+      goToLogin();
       router.push(`/login`)
 
     } catch (error) {
@@ -44,7 +48,7 @@ const SignUp = () => {
           <input
             type="text"
             name=""
-            id=""
+          
             placeholder="Enter Your Name"
             className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
             autofocus
@@ -57,13 +61,13 @@ const SignUp = () => {
           <input
             type="email"
             name="loginEmail"
-            id=""
+          
             value={signUpDetails.loginEmail}
             onChange={inputChangeHandler}
             placeholder="Enter Email Address"
             className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-            autofocus
-            autocomplete
+            autoFocus
+            // autoComplete
             required
           />
         </div>
@@ -73,11 +77,11 @@ const SignUp = () => {
           <input
             type="number"
             name="loginMobile"
-            id=""
+          
             value={signUpDetails.loginMobile}
             onChange={inputChangeHandler}
             placeholder="Enter Mobile No."
-            minlength="10"
+            minLength="10"
             className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none"
             required
@@ -88,11 +92,11 @@ const SignUp = () => {
           <input
             type="password"
             name="password"
-            id=""
+          
             value={signUpDetails.password}
             onChange={inputChangeHandler}
             placeholder="Enter Password"
-            minlength="6"
+            minLength="6"
             className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none"
             required

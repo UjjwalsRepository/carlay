@@ -13,9 +13,7 @@ const Page = () => {
   return (
     <>
     
-<section
-   className="relative z-10 overflow-hidden bg-white dark:bg-dark py-20 lg:py-[120px]"
-   >
+<section className="relative z-10 overflow-hidden bg-white dark:bg-dark py-20 lg:py-[120px]">
    <div className="container mx-auto">
       <div className="flex flex-wrap -mx-4 lg:justify-between">
          <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
@@ -145,9 +143,10 @@ const Page = () => {
           <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
         </GoogleMap>
       )} */}
-               <img
+               {/* <img
                src="./images/location.png" alt="Location"
-               />
+               /> */}
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d795.1459000024606!2d73.91121169702404!3d18.557231101292672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1c2d7d73575%3A0xc3166aeaceeda6a5!2sCARLAY%20AUTOS%20PUNE!5e0!3m2!1sen!2sin!4v1712989801040!5m2!1sen!2sin" width="400" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                {/* <form>
                   <div className="mb-6">
                      <input

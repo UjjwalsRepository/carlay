@@ -184,8 +184,8 @@ const Page = ({ params }) => {
 
             {/* Summary */}
             <div className="max-w-screen-xl mx-auto my-3 px-5 bg-white min-h-sceen">
-                <div class="flex flex-col">
-                    <h2 class="font-bold text-xl tracking-tight">
+                <div className="flex flex-col">
+                    <h2 className="font-bold text-xl tracking-tight">
                         CAR SUMMARY
                     </h2>
                 </div>

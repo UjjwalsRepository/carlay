@@ -3,13 +3,12 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Col, Form, Row } from "react-bootstrap";
-import { Button } from "@mui/material";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,11 +43,10 @@ function a11yProps(index) {
   };
 }
 
-const page = () => {
+const AddCar = () => {
   const router = useRouter();
   const { userInfo, updateUserInfo } = useContext(UserContext);
   const { email, mobileNo } = userInfo;
-  console.log("UserInfo", userInfo);
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -69,8 +67,6 @@ const page = () => {
     ownership: "",
     fuel_Type: "",
     state: "Test",
-    isReqApproved: "0",
-    isCarLayAssured: "0",
     transmission: "",
     accidental: "",
     insurance: "",
@@ -83,7 +79,7 @@ const page = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
+  // const [isDisabled, setIsDisabled] = useState(false);
 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
@@ -97,10 +93,7 @@ const page = () => {
   };
   const handleFileSubmit = async (event) => {
     // event.preventDefault()
-    console.log("Uploaded Files", file);
-    console.log("Reg No", formValues.reg_num);
-
-    const url = `http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/UploadAllPic?jsonString=${formValues.reg_num}`;
+    const url = `http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/Carlay/UploadAllPic?jsonString=${formValues.reg_num}`;
 
     const formData = new FormData();
 
@@ -115,7 +108,6 @@ const page = () => {
     //   },
     // };
     await axios.post(url, formData).then((response) => {
-      console.log(response.data);
     });
   };
 
@@ -144,10 +136,10 @@ const page = () => {
       file.length > 6
     ) {
       if (userInfo.email !== "") {
-        alert("Inside");
+        // alert("Inside");
         // setIsSubmit(true);
         handleFileSubmit();
-        // handleSubmit();
+        handleSubmit();
       } else {
         alert("Please Login first");
         router.push("/login");
@@ -161,10 +153,11 @@ const page = () => {
     // e.preventDefault();
     try {
       let result = await axios.post(
-        "http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/carlay/SellaCarRequest",
+        "http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/carlay/SellaCarRequest",
         formValues
       );
-      console.log("Post Message", result.message);
+      toast.success("Request Submitted Successfully, Out team will contact you soon");
+      router.push('/')
     } catch (error) {
       console.error(error);
     }
@@ -174,7 +167,7 @@ const page = () => {
     // console.log(formErrors)
     if (Object.keys(formErrors).length === 0 && !isSubmit) {
       // setIsDisabled(!isDisabled)
-      console.log("Form Values", formValues);
+      // console.log("Form Values", formValues);
     }
   }, [formErrors]);
 
@@ -402,7 +395,8 @@ const page = () => {
                   <Form.Label className="text-white">Mobile No</Form.Label>
                   <Form.Control
                     name="mobile"
-                    value={mobileNo != "" ? mobileNo : formValues.mobile}
+                    // value={mobileNo != "" ? mobileNo : formValues.mobile}
+                    value={formValues.mobile}
                     onChange={handleInputChange}
                     type="number"
                     placeholder="Enter Mobile No"
@@ -417,7 +411,8 @@ const page = () => {
                   <Form.Label className="text-white">Email</Form.Label>
                   <Form.Control
                     name="email"
-                    value={email != "" ? email : formValues.email}
+                    // value={email != "" ? email : formValues.email}
+                    value={formValues.email}
                     onChange={handleInputChange}
                     type="email"
                     placeholder="Enter email"
@@ -473,7 +468,6 @@ const page = () => {
                 </Form.Group>
                 {/* <p className="text-red-900">{formErrors.lastName}</p> */}
               </Col>
-
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
                 <Form.Label className="text-white">Right Image</Form.Label>
                 <Form.Group>
@@ -543,4 +537,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AddCar;

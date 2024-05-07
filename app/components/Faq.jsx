@@ -3,11 +3,11 @@ import React from 'react'
 const Faq = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen">
-	<div class="flex flex-col items-center">
-		<h2 class="font-bold text-xl tracking-tight mt-4">
+	<div className="flex flex-col items-center">
+		<h2 className="font-bold text-xl tracking-tight mt-4">
 			FAQ
 		</h2>
-		<p class="text-neutral-500 text-xl mt-4">
+		<p className="text-neutral-500 text-xl mt-4">
 			Frequenty asked questions
 		</p>
 	</div>

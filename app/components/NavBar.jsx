@@ -5,42 +5,40 @@ import {FaBars,FaTimes} from "react-icons/fa"
 import { IoHome } from "react-icons/io5";
 import { UserContext } from '../context/UserContext';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 
 const NavBar = () => {
+    const router=useRouter()
     const {userInfo,updateUserInfo}=useContext(UserContext);
+//   var loginData = JSON.parse(localStorage.getItem('loginData'));
+  var loginData = "";
+  console.log("Login Data", userInfo);
     const logOut={
         name: "",
         email: "",
         mobileNo: "",
-        userType: "",
+        userType: "Logged Out",
         message: ""
       }
     // console.log("Nav Bar",userInfo)
     const navlinks=[
         {title:"Home",link:"/"},
-        // {title:"ListOfCars",link:"/listofcar"},
-        // {title:"AddCar",link:"/addcar1"},
         {title:"About",link:"/about"},
+        {title:"Upload",link:"/uploadForms"},
         {title:"Contact Us",link:"/contact"},
-        // {title:"Admin",link:"/admin"},
         {title:"Login",link:"/login"},
         
     ]
     const userlinks=[
         {title:"Home",link:"/"},
-        // {title:"ListOfCars",link:"/listofcar"},
-        // {title:"AddCar",link:"/addcar1"},
         {title:"About",link:"/about"},
         {title:"Contact Us",link:"/contact"},
-        // {title:"Admin",link:"/admin"},
         {title:"Logout",link:""},
         
     ]
     const adminlinks=[
         {title:"Home",link:"/"},
-        // {title:"ListOfCars",link:"/listofcar"},
-        // {title:"AddCar",link:"/addcar1"}, 
         {title:"About",link:"/about"},
         {title:"Contact Us",link:"/contact"},
         {title:"Admin",link:"/admin"},
@@ -54,10 +52,16 @@ const NavBar = () => {
 
     const logOutHandler=()=>{
         // alert("Logout Clicked")
-        updateUserInfo(logOut)
-        toast("User Logged Out Successfully")
+        localStorage.setItem('loginData',JSON.stringify(logOut));
+         loginData = JSON.parse(localStorage.getItem('loginData'));
+        // console.log("Login Data",loginData.userType);
+        // localStorage.clear();
+        updateUserInfo(loginData)
+        toast.success("User Logged Out Successfully")
+        router.push('/')
     } 
     
+//   console.log("Login Data", loginData.userType);
         
 
   return (
@@ -67,13 +71,13 @@ const NavBar = () => {
                     <div className="flex items-center">
                         <Link href="/" className='text-white'>
                             <span className='tracking-wide text-2xl font-bold' id="logo">CarLay</span><br/>
-                            <span><i className='italic'>Nayi Nahi Par Nayi Jaisi</i></span>
+                            <span><i className='italic hover:bg-sky-500'>Nayi Nahi Par Nayi Jaisi</i></span>
                         </Link>
                    </div>
                     {/* NavLinks */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            {userInfo.userType==='User'?userlinks.map((link,index)=>(
+                            {userInfo?.userType==='User'?userlinks.map((link,index)=>(
                                 <>
                                 {link.link!==""?(
                                     <Link key={index}
@@ -89,7 +93,7 @@ const NavBar = () => {
                                 )}
                                 </>
                                
-                            )):(userInfo.userType==='Admin')?adminlinks.map((link,index)=>(
+                            )):(userInfo?.userType==='Admin')?adminlinks.map((link,index)=>(
                                 <>
                                 {link.link!==""?(
                                     <Link key={index}
@@ -126,22 +130,8 @@ const NavBar = () => {
                 {open?(
                     <div className="md:hidden">
                         <div className="ox-2 pt-2 pb-3 space-y-1 sm:px-3 bg-red-400">
-                        {/* {userInfo.userType==='User'?userlinks.map((link,index)=>(
-                                <Link key={index}
-                                href={link.link}
-                                className='text-white hover:bg-gray-700 hover:text-white
-                                block px-3 py-2 rounded-md text-base font-medium'>
-                                    {link.title}
-                                </Link>
-                            )):adminlinks.map((link,index)=>(
-                                <Link key={index}
-                                href={link.link}
-                                className='text-white hover:bg-gray-700 hover:text-white
-                                block px-3 py-2 rounded-md text-base font-medium'>
-                                    {link.title}
-                                </Link>
-                            ))} */}
-                            {userInfo.userType==='User'?userlinks.map((link,index)=>(
+                        
+                            {userInfo?.userType==='User'?userlinks.map((link,index)=>(
                                 <>
                                 {link.link!==""?(
                                     <Link key={index}
@@ -158,7 +148,7 @@ const NavBar = () => {
                                 )}
                                 </>
                                
-                            )):(userInfo.userType==='Admin')?adminlinks.map((link,index)=>(
+                            )):(userInfo?.userType==='Admin')?adminlinks.map((link,index)=>(
                                 <>
                                 {link.link!==""?(
                                     <Link key={index}

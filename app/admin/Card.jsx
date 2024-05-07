@@ -2,17 +2,20 @@ import Link from 'next/link';
 import React from 'react'
 import { MdEdit,MdOutlineAutoDelete } from "react-icons/md";
 
-const Card = ({manufacturer,variant,regNo,id}) => {
+const Card = ({manufacturer,variant,regNo,id,deleteCars}) => {
+    const onDelete=(id)=>{
+        deleteCars(id)
+    }
   return (
     <>
-        <div className="flex flex-col justify-center items-center mt-4 mx-4">
+        <div className="flex flex-col justify-center items-center my-4 mx-4">
             <div className="!z-5 max-w-[250px] rounded bg-[#ebecee] bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-4 3xl:p-![18px]">
                 <div className="h-full w-full">
                     <div className="relative w-full mb-4">
                         <img src="/images/front.png" alt=""/>
                        
                     </div>
-                    <div className="flex flex-col items-center justify-between px-1 md:items-start">
+                    <div className="flex items-center justify-between px-1 md:items-start">
                         <div className="">
                             <p className="text-lg font-bold text-navy-700">{manufacturer}&nbsp;-&nbsp;{variant}</p>
                             <p className="mt-1 text-sm font-bold text-blue-900 md:mt-2">{regNo}</p>
@@ -22,7 +25,7 @@ const Card = ({manufacturer,variant,regNo,id}) => {
 
                         <button className="cursor-pointer"><MdEdit size={30} className='border-2 border-blue-900 blue	rounded p-1'/></button>
                         </Link>
-                        <button className="cursor-pointer"><MdOutlineAutoDelete size={30} className='border-2 border-blue-900	rounded p-1'/></button>
+                        <button className="cursor-pointer" onClick={()=>{onDelete(id)}}><MdOutlineAutoDelete size={30} className='border-2 border-blue-900	rounded p-1'/></button>
                        </div>
                         {/* <div className="mb-2">
                             <button><MdEdit/></button>

@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import toast from 'react-hot-toast';
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 const SignIn = () => {
   const router = useRouter()
   const {userInfo,updateUserInfo}=useContext(UserContext);
@@ -24,23 +24,25 @@ const SignIn = () => {
   const inputChangeHandler=(e)=>{
     const {name,value}=e.target
     setLoginDetails({...loginDetails,[name]:value});
-    console.log("Login Details",loginDetails);
     
   }
+  
   const loginHandler=async(e)=>{
     e.preventDefault();
     try {         
-      let result = await axios.post("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/validateLogin",loginDetails);
+      let result = await axios.post("http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/Carlay/validateLogin",loginDetails);
       let userData = result.data;
-      console.log("Post Message",userData);
       if(userData.message=="User successfully logged in"){
 
-        updateUserInfo(userData);
+        // var testObject = { 'URL': 1, 'TITLE': 2 };
+        localStorage.setItem('loginData', JSON.stringify(userData));
+        var loginData = JSON.parse(localStorage.getItem('loginData'));
+        updateUserInfo(loginData);
         router.push('/')
-        toast(userData.message);
+        toast.success(userData.message);
 
       }else{
-        toast(userData.message);
+        toast.success(userData.message);
         return;
       }
     } catch (error) {
@@ -62,13 +64,12 @@ const SignIn = () => {
           <input
             type="email"
             name="loginEmail"
-            id=""
             value={loginDetails.loginEmail}
             onChange={inputChangeHandler}
             placeholder="Enter Email Address"
             className="w-full px-2 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-            autofocus
-            autocomplete
+            autoFocus
+            // autoComplete
             required
           />
         </div>
@@ -78,12 +79,11 @@ const SignIn = () => {
           <input
             type="password"
             name="password"
-            id=""
             value={loginDetails.password}
             onChange={inputChangeHandler}
 
             placeholder="Enter Password"
-            minlength="6"
+            minLength="6"
             className="w-full px-2 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none"
             required

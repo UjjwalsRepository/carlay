@@ -5,7 +5,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { Carousel } from "react-bootstrap";
 import Link from "next/link";
 
-const CarCard = ({ manufacturer, variant, mfg, km, fuel, id }) => {
+const CarCard = ({ manufacturer, variant, mfg, km, fuel, id,assured}) => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -47,10 +47,19 @@ const CarCard = ({ manufacturer, variant, mfg, km, fuel, id }) => {
         </div>
         <div className=" my-4 w-[30%] ">
           <div className="flex flex-row gap-1 bg-blue-950 rounded-xl px-2 py-1 mr-2 text-white text-[10px]">
-            {/* <AiOutlineSafetyCertificate color="orange" size="16" /> */}
-            <FaRegCheckCircle color="orange" size="16" />
-            {/* <h1>Carlay Assured</h1> */}
-            <h1 className="my-auto">Park and Sell</h1>
+            {assured==="No"?(
+              <>
+              <FaRegCheckCircle color="orange" size="16" />
+              <h1 className="my-auto">Park and Sell</h1>
+              </>
+            ):(
+              <>
+                <AiOutlineSafetyCertificate color="orange" size="16" />
+                <h1>Carlay Assured</h1>
+              </>
+            )
+            }
+            
           </div>
         </div>
       </div>

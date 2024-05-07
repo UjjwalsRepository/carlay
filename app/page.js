@@ -11,6 +11,8 @@ export default function Home() {
   const [isAdmin,setIsAdmin]=useState(false)
   const {userInfo,updateUserInfo}=useContext(UserContext);
   // console.log("Master Page",userInfo)
+  // var retrievedObject = localStorage.getItem('loginData');
+  // console.log('retrievedObject in Home Page: ', JSON.parse(retrievedObject));
   return (
     <main className="overflow-hidden h-full">
           <div className="overflow-hidden">

@@ -7,12 +7,8 @@ import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import axios from "axios";
 import Link from "next/link";
-const Page = ({ params }) => {
-  let id = params.id;
-  const router = useRouter();
-  // const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+const Page = () => {
+    
   // const initialValues = {
   //   firstName: "",
   //   lastName: "",
@@ -42,35 +38,11 @@ const Page = ({ params }) => {
   //   isReqApproved: "",
   //   isCarLayAssured: "",
   // };
+
   const [formValues, setFormValues] = useState({});
 
 
-
-  const fetchData = async () => {
-    await axios
-      .get(
-        `http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarDetail?detailId=${id}`
-      )
-      .then((res) => {
-        // console.log(res.data.sellaCarModelList[0])
-        setFormValues(res.data.sellaCarModelList[0]);
-        
-
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        if (error.response) {
-          console.error("Response data:", error.response.data);
-         
-        }
-      });
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-    //File Upload
+    // File Upload
     const [file, setFile] = useState([]);
     const handleFileChange = (event) => {
       setFile([...file, event.target.files[0]]);
@@ -115,42 +87,15 @@ const Page = ({ params }) => {
   };
 
   return (
-    <>
-      <div className="min-h-screen">
-        {loading ? (
-          <Box >
-            <LinearProgress />
-          </Box>
-        ) : (
+   
           <>
-            <Row>
-              <Col>
-                <button
-                  onClick={() => router.back()}
-                  className="mx-4 my-3 focus-visible:ring-ring ring-offset-background inline-flex h-10 items-center justify-center rounded-md bg-[#4046ed] px-2 py-1 text-lg font-medium text-[#e9ffec] transition-colors hover:bg-[#4f9deb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-                >
-                  List of Cars&nbsp;
-                  <MdList size={30} />
-                </button>
-              </Col>
-              <Col>
-            <div className='flex justify-end'>
-            <Link href="/adminAddCar">
-            <button  className="my-3 focus-visible:ring-ring ring-offset-background inline-flex h-10 items-center justify-center rounded-md bg-[#248046] px-2 py-1 text-lg font-medium text-[#e9ffec] transition-colors hover:bg-[#1a6334] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">Add New Car &nbsp;<MdAddCircleOutline size={30}/></button>
-            </Link>
-           
-            </div>
-              
-            </Col>
-            </Row>
-            <div className="w-full p-4">
-
-              <Form onSubmit={handleSubmit}>
+           <div className="w-full p-4">
+                <Form onSubmit={handleSubmit}>
                 <Row className=" bg-blue-900 rounded-lg p-3 mb-4">
-                  <Col xl={4} lg={4} md={4} sm={6}>
+                    <Col xl={4} lg={4} md={4} sm={6}>
                     <Form.Group>
-                      <Form.Label className="text-white">Manufacturer</Form.Label>
-                      <Form.Control
+                        <Form.Label className="text-white">Manufacturer</Form.Label>
+                        <Form.Control
                         name="manufacturerName"
                         value={formValues.manufacturerName}
                         onChange={handleChange}
@@ -158,13 +103,13 @@ const Page = ({ params }) => {
                         placeholder="Please enter Manufacturer Name"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6}>
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6}>
                     <Form.Group>
-                      <Form.Label className="text-white">Variant Name</Form.Label>
-                      <Form.Control
+                        <Form.Label className="text-white">Variant Name</Form.Label>
+                        <Form.Control
                         name="variantName"
                         value={formValues.variantName}
                         onChange={handleChange}
@@ -172,15 +117,15 @@ const Page = ({ params }) => {
                         placeholder="Please enter Variant Name"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6}>
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6}>
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Year of Manufacture
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="yom"
                         value={formValues.yom}
                         onChange={handleChange}
@@ -188,74 +133,74 @@ const Page = ({ params }) => {
                         placeholder="Enter Mfg. Year"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Fuel Type</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Fuel Type</Form.Label>
+                        <Form.Select
                         name="fuel_Type"
                         value={formValues.fuel_Type}
                         onChange={handleChange}
-                      >
-                        <option selected>{formValues.fuel_Type}</option>
+                        >
+                        <option selected={formValues.fuel_Type}>Fuel Type</option>
                         <option>Petrol</option>
                         <option>Diesel</option>
                         <option>CNG</option>s
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Transmission</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Transmission</Form.Label>
+                        <Form.Select
                         name="transmission"
                         value={formValues.transmission}
                         onChange={handleChange}
-                      >
+                        >
                         <option selected={formValues.transmission}>
-                          Select Transmission
+                            Select Transmission
                         </option>
                         <option>Manual</option>
                         <option>Automatic</option>
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Accidental</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Accidental</Form.Label>
+                        <Form.Select
                         name="accidental"
                         value={formValues.accidental}
                         onChange={handleChange}
-                      >
-                        <option selected>{formValues.accidental}</option>
+                        >
+                        <option selected={formValues.accidental}>Accidental</option>
                         <option>No</option>
                         <option>Yes</option>
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Insurance</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Insurance</Form.Label>
+                        <Form.Select
                         name="insurance"
                         value={formValues.insurance}
                         onChange={handleChange}
-                      >
-                        <option selected>{formValues.insurance}</option>
+                        >
+                        <option selected={formValues.insurance}>Insurance</option>
                         <option>Yes</option>
                         <option>No</option>
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Vechile Reg. State
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="state"
                         value={formValues.state}
                         onChange={handleChange}
@@ -263,15 +208,15 @@ const Page = ({ params }) => {
                         placeholder="Please enter vechile reg. state"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Vechile Reg. City
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="reg_city"
                         value={formValues.reg_city}
                         onChange={handleChange}
@@ -279,30 +224,30 @@ const Page = ({ params }) => {
                         placeholder="Please enter vechile reg. city"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Ownership</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Ownership</Form.Label>
+                        <Form.Select
                         name="ownership"
                         value={formValues.ownership}
                         onChange={handleChange}
-                      >
-                        <option selected>{formValues.ownership}</option>
+                        >
+                        <option selected={formValues.ownership}>Ownership</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Vechile current location.
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="v_location"
                         value={formValues.v_location}
                         onChange={handleChange}
@@ -310,15 +255,15 @@ const Page = ({ params }) => {
                         placeholder="Please enter vechile current location."
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Vechile Reg. No.
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="reg_num"
                         value={formValues.reg_num}
                         onChange={handleChange}
@@ -326,15 +271,15 @@ const Page = ({ params }) => {
                         placeholder="Please enter vechile reg. no"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Kilometer Reading
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="kmReading"
                         value={formValues.kmReading}
                         onChange={handleChange}
@@ -342,15 +287,15 @@ const Page = ({ params }) => {
                         placeholder="Please enter kilometer reading"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">
+                        <Form.Label className="text-white">
                         Vechile Expected Price
-                      </Form.Label>
-                      <Form.Control
+                        </Form.Label>
+                        <Form.Control
                         name="expected_Price"
                         value={formValues.expected_Price}
                         onChange={handleChange}
@@ -358,147 +303,147 @@ const Page = ({ params }) => {
                         placeholder="Please enter expected price"
                         aria-describedby="inputGroupPrepend"
                         required
-                      />
+                        />
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Approved</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Approved</Form.Label>
+                        <Form.Select
                         name="isReqApproved"
                         value={formValues.isReqApproved}
                         onChange={handleChange}
-                      >
-                        <option selected>{formValues.isReqApproved}</option>
+                        >
+                        <option selected={formValues.isReqApproved}>Approved</option>
                         <option>Yes</option>
                         <option>No</option>
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Approved</Form.Label>
-                      <Form.Select
+                        <Form.Label className="text-white">Carlay Assured</Form.Label>
+                        <Form.Select
                         name="isCarLayAssured"
                         value={formValues.isCarLayAssured}
                         onChange={handleChange}
-                      >
-                        <option selected>{formValues.isCarLayAssured}</option>
+                        >
+                        <option selected={formValues.isCarLayAssured}>Assured</option>
                         <option>Yes</option>
                         <option>No</option>
-                      </Form.Select>
+                        </Form.Select>
                     </Form.Group>
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">RC Image</Form.Label>
-                      <Form.Control
+                        <Form.Label className="text-white">RC Image</Form.Label>
+                        <Form.Control
                         name="rcImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.firstName}</p> */}
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Group>
-                      <Form.Label className="text-white">Front Image</Form.Label>
-                      <Form.Control
+                        <Form.Label className="text-white">Front Image</Form.Label>
+                        <Form.Control
                         name="frontImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.lastName}</p> */}
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Label className="text-white">Rear Image</Form.Label>
                     <Form.Group>
-                      <Form.Control
+                        <Form.Control
                         name="rearImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.lastName}</p> */}
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Label className="text-white">Right Image</Form.Label>
                     <Form.Group>
-                      <Form.Control
+                        <Form.Control
                         name="rightImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.lastName}</p> */}
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Label className="text-white">Left Image</Form.Label>
                     <Form.Group>
-                      <Form.Control
+                        <Form.Control
                         name="leftImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.lastName}</p> */}
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Label className="text-white">Odometer Image</Form.Label>
                     <Form.Group>
-                      <Form.Control
+                        <Form.Control
                         name="dometerImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.lastName}</p> */}
-                  </Col>
-                  <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
                     <Form.Label className="text-white">Seat Image</Form.Label>
                     <Form.Group>
-                      <Form.Control
+                        <Form.Control
                         name="seatImage"
                         //   value={formValues.firstName}
                         onChange={handleFileChange}
                         type="file"
                         aria-describedby="inputGroupPrepend"
                         // required
-                      />
+                        />
                     </Form.Group>
                     {/* <p className="text-red-900">{formErrors.lastName}</p> */}
-                  </Col>
-                  <Col xl={6} lg={6} md={6} sm={6} className="mt-4 flex justify-center items-center">
+                    
+                    </Col>
+                    <Col xl={4} lg={4} md={4} sm={6} className="mt-4 flex justify-center items-center">
                     <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                      Update
+                        Add Record
                     </button>
-                  </Col>
+                    </Col>
                 </Row>
-              </Form>
-            </div>
+                </Form>
+
+           </div>
           </>
-        )}
-      </div>
-    </>
+       
   );
 };
 
