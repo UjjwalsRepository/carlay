@@ -2,9 +2,16 @@
 import React,{useState} from "react";
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast';
+import {ApiConfig} from '../../config';
+import { Spinner } from "flowbite-react";     
+
 import axios from "axios";
 const SignUp = ({setIsLoggedIn,isLoggedIn}) => {
   const router=useRouter()
+
+ const [loading,setLogin]=useState(false);
+
+
   const [signUpDetails,setSignUpDetails] =useState({
     loginEmail: "",
     loginMobile: "",
@@ -23,9 +30,11 @@ const SignUp = ({setIsLoggedIn,isLoggedIn}) => {
   }
   const signUpHandler=async(e)=>{
     e.preventDefault();
-    try {         
-      let result = await axios.post("http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/Carlay/signUpUser",signUpDetails);
+    try { 
+      setLogin(true)        
+      let result = await axios.post(ApiConfig.signUpUser,signUpDetails);
       toast.success(result.data.message)
+      setLogin(false)
       goToLogin();
       router.push(`/login`)
 
@@ -108,7 +117,7 @@ const SignUp = ({setIsLoggedIn,isLoggedIn}) => {
           className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
         px-4 py-2 mt-4"
         >
-          Sign Up
+          Sign Up{loading && <Spinner/>}
         </button>
       </form>
 

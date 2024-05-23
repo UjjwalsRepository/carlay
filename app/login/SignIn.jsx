@@ -5,6 +5,10 @@ import toast from 'react-hot-toast';
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import { useRouter } from 'next/navigation';
+import {ApiConfig} from '../../config'
+import { Spinner } from "flowbite-react";     
+
+// console.log("ApiConfig",ApiConfig)
 const SignIn = () => {
   const router = useRouter()
   const {userInfo,updateUserInfo}=useContext(UserContext);
@@ -15,7 +19,7 @@ const SignIn = () => {
   //   userType: "",
   //   message: ""
   // }
- 
+ const [loading,setLogin]=useState(false);
   const [loginDetails,setLoginDetails] =useState({
     loginEmail: "",
     password: "",
@@ -29,8 +33,9 @@ const SignIn = () => {
   
   const loginHandler=async(e)=>{
     e.preventDefault();
-    try {         
-      let result = await axios.post("http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/Carlay/validateLogin",loginDetails);
+    try {   
+      setLogin(true)      
+      let result = await axios.post(ApiConfig.validateLogin,loginDetails);
       let userData = result.data;
       if(userData.message=="User successfully logged in"){
 
@@ -38,11 +43,14 @@ const SignIn = () => {
         localStorage.setItem('loginData', JSON.stringify(userData));
         var loginData = JSON.parse(localStorage.getItem('loginData'));
         updateUserInfo(loginData);
+      setLogin(false)      
+
         router.push('/')
+
         toast.success(userData.message);
 
       }else{
-        toast.success(userData.message);
+        toast.error(userData.message);
         return;
       }
     } catch (error) {
@@ -99,8 +107,9 @@ const SignIn = () => {
           className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
         px-4 py-2 mt-4"
         >
-          Log In
+          Log In {loading && <Spinner/>}
         </button>
+        
       </form>
 
       <hr className="my-2 border-gray-300 w-full" />

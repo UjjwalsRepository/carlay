@@ -18,14 +18,13 @@ const NavBar = () => {
         name: "",
         email: "",
         mobileNo: "",
-        userType: "Logged Out",
-        message: ""
+        userType: "",
+        message: "Logged Out"
       }
     // console.log("Nav Bar",userInfo)
     const navlinks=[
         {title:"Home",link:"/"},
         {title:"About",link:"/about"},
-        {title:"Upload",link:"/uploadForms"},
         {title:"Contact Us",link:"/contact"},
         {title:"Login",link:"/login"},
         
@@ -41,6 +40,7 @@ const NavBar = () => {
         {title:"Home",link:"/"},
         {title:"About",link:"/about"},
         {title:"Contact Us",link:"/contact"},
+        // {title:"Upload",link:"/uploadForms"},
         {title:"Admin",link:"/admin"},
         {title:"Logout",link:""},
         
@@ -129,7 +129,7 @@ const NavBar = () => {
                 {/* mobile-menu */}
                 {open?(
                     <div className="md:hidden">
-                        <div className="ox-2 pt-2 pb-3 space-y-1 sm:px-3 bg-red-400">
+                        <div className="flex flex-col text-center ox-2 pt-2 pb-3 space-y-1 sm:px-3 bg-red-400">
                         
                             {userInfo?.userType==='User'?userlinks.map((link,index)=>(
                                 <>

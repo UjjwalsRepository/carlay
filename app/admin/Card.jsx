@@ -8,7 +8,7 @@ const Card = ({manufacturer,variant,regNo,id,deleteCars}) => {
     }
   return (
     <>
-        <div className="flex flex-col justify-center items-center my-4 mx-4">
+        <div className="flex flex-col justify-center items-center my-4 mx-2">
             <div className="!z-5 max-w-[250px] rounded bg-[#ebecee] bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-4 3xl:p-![18px]">
                 <div className="h-full w-full">
                     <div className="relative w-full mb-4">

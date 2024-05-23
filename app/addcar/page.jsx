@@ -5,11 +5,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Col, Form, Row } from "react-bootstrap";
+import { FileInput, Label, Select, TextInput } from "flowbite-react";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
+import { ApiConfig } from "../../config";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -79,7 +80,6 @@ const AddCar = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  // const [isDisabled, setIsDisabled] = useState(false);
 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
@@ -87,26 +87,41 @@ const AddCar = () => {
   };
 
   //File Upload
-  const [file, setFile] = useState([]);
-  const handleFileChange = (event) => {
-    setFile([...file, event.target.files[0]]);
-  };
-  const handleFileSubmit = async (event) => {
-    // event.preventDefault()
-    const url = `http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/Carlay/UploadAllPic?jsonString=${formValues.reg_num}`;
+  const [files, setFiles] = useState([]);
+  const handleFileChange = async(event) => {
+    // const selectedFiles=Array.from(event.target.files);
+    // setFiles((prevFiles)=>[...prevFiles,...selectedFiles])
+    setFiles([...files,event.target.files[0]]);
+    // const url = `http://carlayapimay-dev.eba-npfpmnm6.ap-south-1.elasticbeanstalk.com/api/Carlay/UploadAllPic?jsonString=${'DL-1234'}`;
+    const url = `http://carlayapimay-dev.eba-npfpmnm6.ap-south-1.elasticbeanstalk.com/api/Carlay/UploadAllPic?jsonString=${formValues.reg_num}`;
 
     const formData = new FormData();
+    formData.append('files',event.target.files[0])
+    await axios.post(url, formData).then((response) => {
+    });
 
+  };
+  const handleFileSubmit = async (event) => {
+    // event.preventDefault();
+
+    alert("Handle file submit")
+    const url = `http://carlayapimay-dev.eba-npfpmnm6.ap-south-1.elasticbeanstalk.com/api/Carlay/UploadAllPic?jsonString=${formValues.reg_num}`;
+
+    const formData = new FormData();
+    
     // Append each file to FormData
-    for (let i = 0; i < file.length; i++) {
-      formData.append("files", file[i]);
+    for (let i = 0; i < files.length; i++) {
+      // formData.append("files", file[i]);
+      formData.append(`files${i}`, files[i]);
     }
+    // files.forEach((file,index)=>{
+    //   formData.append(`file${index}`,file);
+    // });
 
-    // const config = {
-    //   headers: {
-    //     'content-type': 'multipart/form-data',
-    //   },
-    // };
+// Log FormData contents
+// for (let [key, value] of formData.entries()) {
+//   console.log(`${key}:`, value);
+// }
     await axios.post(url, formData).then((response) => {
     });
   };
@@ -115,7 +130,6 @@ const AddCar = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    // console.log(formValues);
   };
   //Handle Form Submit
   const handleFormSubmit = (e) => {
@@ -133,12 +147,10 @@ const AddCar = () => {
       formValues.lastName != "" &&
       formValues.email != "" &&
       formValues.mobile != "" &&
-      file.length > 6
+      files.length > 1
     ) {
       if (userInfo.email !== "") {
-        // alert("Inside");
-        // setIsSubmit(true);
-        handleFileSubmit();
+        // handleFileSubmit();
         handleSubmit();
       } else {
         alert("Please Login first");
@@ -151,9 +163,10 @@ const AddCar = () => {
   };
   const handleSubmit = async () => {
     // e.preventDefault();
+    console.log(formValues);
     try {
       let result = await axios.post(
-        "http://carlayapiw-dev.eba-fpqv9uis.ap-south-1.elasticbeanstalk.com/api/carlay/SellaCarRequest",
+        "http://carlayapimay-dev.eba-npfpmnm6.ap-south-1.elasticbeanstalk.com/api/Carlay/SellaCarRequest",
         formValues
       );
       toast.success("Request Submitted Successfully, Out team will contact you soon");
@@ -232,7 +245,20 @@ const AddCar = () => {
           <CustomTabPanel value={value} index={0}>
             <Row className="bg-blue-900 rounded-lg p-3">
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="countries" value="Fuel Type" />
+                      </div>
+                      <Select id="countries" required sizing="md"
+                      name="fuel_Type"
+                      value={formValues.fuel_Type}
+                      onChange={handleInputChange}
+                      >
+                        <option>Select Fuel Type</option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>CNG</option>
+                      </Select>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Fuel Type</Form.Label>
                   <Form.Select
                     name="fuel_Type"
@@ -246,11 +272,23 @@ const AddCar = () => {
                     <option>Diesel</option>
                     <option>CNG</option>s
                   </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.fuel_Type}</p>
               </Col>
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}}  value="Transmission" />
+                      </div>
+                      <Select required sizing="md"
+                      name="transmission"
+                      value={formValues.transmission}
+                      onChange={handleInputChange}
+                      >
+                        <option>Select Transmission</option>
+                        <option>Manual</option>
+                        <option>Automatic</option>
+                      </Select>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Transmission</Form.Label>
                   <Form.Select
                     name="transmission"
@@ -263,11 +301,23 @@ const AddCar = () => {
                     <option>Manual</option>
                     <option>Automatic</option>
                   </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.transmission}</p>
               </Col>
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}}  value="Accidental" />
+                      </div>
+                      <Select required sizing="md"
+                      name="accidental"
+                      value={formValues.accidental}
+                      onChange={handleInputChange}
+                      >
+                        <option>Select Accitental Type</option>
+                        <option>No</option>
+                        <option>Yes</option>
+                      </Select>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Accidental</Form.Label>
                   <Form.Select
                     name="accidental"
@@ -280,16 +330,26 @@ const AddCar = () => {
                     <option>No</option>
                     <option>Yes</option>
                   </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.accidental}</p>
               </Col>
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}}  value="Insurance" />
+                      </div>
+                      <Select required sizing="md"
+                      name="insurance"
+                      value={formValues.insurance}
+                      onChange={handleInputChange}
+                      >
+                        <option>Select Insurance</option>
+                        <option>No</option>
+                        <option>Yes</option>
+                      </Select>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Insurance</Form.Label>
                   <Form.Select
                     name="insurance"
-                    // value={userData["insurance" || ""]}
-                    // onChange={handleChange}
                     value={formValues.insurance}
                     onChange={handleInputChange}
                   >
@@ -297,12 +357,27 @@ const AddCar = () => {
                     <option>Yes</option>
                     <option>No</option>
                   </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.insurance}</p>
               </Col>
 
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="Vechile Reg. No." />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="reg_num"
+                        value={formValues.reg_num}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Please enter vechile reg. no"
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">
                     Vechile Reg. No.
                   </Form.Label>
@@ -316,11 +391,26 @@ const AddCar = () => {
                     placeholder="Please enter vechile reg. no"
                     aria-describedby="inputGroupPrepend"
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.reg_num}</p>
               </Col>
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="Vechile current location." />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="v_location"
+                        value={formValues.v_location}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Please enter vechile current location."
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">
                     Vechile current location.
                   </Form.Label>
@@ -334,12 +424,27 @@ const AddCar = () => {
                     placeholder="Please enter vechile current location."
                     aria-describedby="inputGroupPrepend"
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.v_location}</p>
               </Col>
 
               <Col xl={4} lg={4} md={4} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="Kilometer Reading" />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="kmReading"
+                        value={formValues.kmReading}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Please enter kilometer reading"
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">
                     Kilometer Reading
                   </Form.Label>
@@ -353,7 +458,7 @@ const AddCar = () => {
                     placeholder="Please enter kilometer reading"
                     aria-describedby="inputGroupPrepend"
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.kmReading}</p>
               </Col>
             </Row>
@@ -361,7 +466,22 @@ const AddCar = () => {
           <CustomTabPanel value={value} index={1}>
             <Row className="bg-blue-900 rounded p-3">
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="First Name" />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="lastName"
+                        value={formValues.firstName}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Enter First Name"
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">First Name</Form.Label>
                   <Form.Control
                     name="firstName"
@@ -372,11 +492,26 @@ const AddCar = () => {
                     aria-describedby="inputGroupPrepend"
                     // required
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.firstName}</p>
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="Last Name" />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="lastName"
+                        value={formValues.lastName}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Enter Last Name"
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Last Name</Form.Label>
                   <Form.Control
                     name="lastName"
@@ -387,11 +522,26 @@ const AddCar = () => {
                     aria-describedby="inputGroupPrepend"
                     // required
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.lastName}</p>
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="Mobile No." />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="mobile"
+                        value={formValues.mobile}
+                        onChange={handleInputChange}
+                        type="number"
+                        placeholder="Enter Mobile No"
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Mobile No</Form.Label>
                   <Form.Control
                     name="mobile"
@@ -403,11 +553,26 @@ const AddCar = () => {
                     aria-describedby="inputGroupPrepend"
                     // required
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.mobileNo}</p>
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
+              <div>
+                        <div className="mb-2 block">
+                          <Label style={{color:"#fff"}} value="Email" />
+                        </div>
+                        <TextInput
+                        sizing="md"
+                        shadow
+                        name="email"
+                        value={formValues.email}
+                        onChange={handleInputChange}
+                        type="email"
+                        placeholder="Enter email"
+                        required
+                         />
+                      </div>
+                {/* <Form.Group>
                   <Form.Label className="text-white">Email</Form.Label>
                   <Form.Control
                     name="email"
@@ -419,7 +584,7 @@ const AddCar = () => {
                     aria-describedby="inputGroupPrepend"
                     // required
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <p className="text-red-900">{formErrors.email}</p>
               </Col>
             </Row>
@@ -427,102 +592,160 @@ const AddCar = () => {
           <CustomTabPanel value={value} index={2}>
             <Row className="bg-blue-900 rounded p-3">
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="RC Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="rcImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Group>
                   <Form.Label className="text-white">RC Image</Form.Label>
                   <Form.Control
                     name="rcImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
+
                   />
-                </Form.Group>
+                </Form.Group> */}
                 {/* <p className="text-red-900">{formErrors.firstName}</p> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Group>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="Front Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="frontImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Group>
                   <Form.Label className="text-white">Front Image</Form.Label>
                   <Form.Control
                     name="frontImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
                   />
-                </Form.Group>
-                {/* <p className="text-red-900">{formErrors.lastName}</p> */}
+                </Form.Group> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Label className="text-white">Rear Image</Form.Label>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="Rear Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="rearImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Label className="text-white">Rear Image</Form.Label>
                 <Form.Group>
                   <Form.Control
                     name="rearImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
                   />
-                </Form.Group>
-                {/* <p className="text-red-900">{formErrors.lastName}</p> */}
+                </Form.Group> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Label className="text-white">Right Image</Form.Label>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="Right Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="rightImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Label className="text-white">Right Image</Form.Label>
                 <Form.Group>
                   <Form.Control
                     name="rightImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
                   />
-                </Form.Group>
-                {/* <p className="text-red-900">{formErrors.lastName}</p> */}
+                </Form.Group> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Label className="text-white">Left Image</Form.Label>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="Left Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="leftImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Label className="text-white">Left Image</Form.Label>
                 <Form.Group>
                   <Form.Control
                     name="leftImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
                   />
-                </Form.Group>
-                {/* <p className="text-red-900">{formErrors.lastName}</p> */}
+                </Form.Group> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Label className="text-white">Odometer Image</Form.Label>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="Odometer Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="dometerImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Label className="text-white">Odometer Image</Form.Label>
                 <Form.Group>
                   <Form.Control
                     name="dometerImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
                   />
-                </Form.Group>
-                {/* <p className="text-red-900">{formErrors.lastName}</p> */}
+                </Form.Group> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4">
-                <Form.Label className="text-white">Seat Image</Form.Label>
+              <div className="mb-2 block">
+                        <Label style={{color:"#fff"}} htmlFor="file" value="Seat Image" />
+                      </div>
+                      <FileInput id="file" 
+                      sizing="md"
+                      name="seatImage"
+                    onChange={handleFileChange}
+                    type="file"
+                    disabled={formValues.reg_num ===""?true:false}
+                      />
+                {/* <Form.Label className="text-white">Seat Image</Form.Label>
                 <Form.Group>
                   <Form.Control
                     name="seatImage"
-                    //   value={formValues.firstName}
                     onChange={handleFileChange}
                     type="file"
                     aria-describedby="inputGroupPrepend"
-                    // required
+                    disabled={formValues.reg_num ===""?true:false}
                   />
-                </Form.Group>
-                {/* <p className="text-red-900">{formErrors.lastName}</p> */}
+                </Form.Group> */}
               </Col>
               <Col xl={6} lg={6} md={6} sm={6} className="mt-4 flex justify-center items-center">
                 <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">

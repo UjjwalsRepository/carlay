@@ -6,17 +6,21 @@ import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/navigation';
 import Fallback from '../components/Fallback';
 import toast from 'react-hot-toast';
+import { ApiConfig } from "@/config";
+import Loading from '../components/Loading';
+
 
 const Page= ()=> {
   const router = useRouter()
-  const ISSERVER = typeof window === "undefined";
-  if(!ISSERVER) {
-    // Access localStorage
-    var loginData = JSON.parse(window.localStorage.getItem('loginData'));
+//   const ISSERVER = typeof window === "undefined";
+//   if(!ISSERVER) {
+//     // Access localStorage
+//     var loginData = JSON.parse(window.localStorage.getItem('loginData'));
 
-}
-  // var loginData = JSON.parse(localStorage.getItem('loginData'));
+// }
+  var loginData = JSON.parse(localStorage.getItem('loginData'));
 
+  const [loading,setLoading]=useState(false)
   const {userInfo,updateUserInfo}=useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [data,setData]=useState([])
@@ -27,27 +31,22 @@ const Page= ()=> {
 // }
   // Function to fetch data using Axios
 const fetchData = async () => {
-  await axios.get("http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/GetSellCarList")
+    setLoading(true)  
+    await axios.get(ApiConfig.GetSellCarList)
      .then((res)=>{
-         setData(res.data.sellaCarModelList);
-         
+         setData(res.data.sellaCarModelList);     
+         setLoading(false)  
      }
      )
      .catch((error)=>{
          // console.log(error)
          console.error('Error:', error);
-         if (error.response) {
-           console.error('Response data:', error.response.data);
-           console.error('Response status:', error.response.status);
-           console.error('Response headers:', error.response.headers);
-         }
      })
-
 };
 
 const deleteCars=async(id)=>{
-  // alert(`${id} delete clicked`)
-        axios.post(`http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/DeleteACarRequest?id=${id}`)
+  alert(`${id} delete clicked`)
+        axios.post(`http://carlayapimay-dev.eba-npfpmnm6.ap-south-1.elasticbeanstalk.com/api/Carlay/DeleteACarRequest?id=${id}`)
         .then((res)=>{
             // console.log(res);
             setData((prevData=>prevData.filter((data)=>data.id!==id)))
@@ -56,12 +55,6 @@ const deleteCars=async(id)=>{
         })
         .catch((error)=>console.log(error))
 
-        // try {
-        //   const res=await axios.post(`http://carlayapi-dev.eba-ptwhyggf.ap-south-1.elasticbeanstalk.com/api/Carlay/DeleteACarRequest?id=${id}`)
-        //   console.log("Delete Response",res)
-        // } catch (error) {
-        //   console.log("Error",error.message)
-        // }
 }
  
  useEffect(()=>{
@@ -80,7 +73,7 @@ const deleteCars=async(id)=>{
 
   return (
     <>
-        {loginData?.userType==='Admin'?(
+        {loading ?<Loading/>:loginData?.userType==='Admin'?(
                 <div className="bg-white">
                 <div className="flex items-center justify-center">
                   <div className="flex rounded-full bg-[#c4d5ed] mt-2 px-2 w-full max-w-[600px]">
@@ -189,9 +182,10 @@ const deleteCars=async(id)=>{
                 </div>
               </div>
         ):(
-            <Fallback/>
-        )
+          <Fallback/>
+      )
         }
+        
       
     </>
   );

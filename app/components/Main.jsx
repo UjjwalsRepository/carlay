@@ -2,8 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Col, Row } from "react-bootstrap";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
 const Main = () => {
+    const {userInfo,updateUserInfo}=useContext(UserContext);
+    console.log("Login Info",userInfo.userType)
     return (
         <>
             <Row className="h-auto">
@@ -30,8 +34,8 @@ const Main = () => {
                                 <img src="/images/sell.jpg" className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
                             </div>
                             <div className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out ">
-                            <Link href="/addcar1">
-                                <button className="btn bg-blue-900 text-white hover:bg-blue-900">Sell Your Car</button>{' '}
+                            <Link href={userInfo.userType==='Admin'?'/admin':'/addcar'}>
+                                <button className="btn bg-blue-900 text-white hover:bg-blue-900">{userInfo.userType==='Admin'?"Add New Car":"Sell Your Car"}</button>{' '}
                             </Link>
                             
                             </div>
